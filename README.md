@@ -16,3 +16,6 @@ Met DingDung kunnen in hun omgeving zoeken naar beschikbare toiletten. Op een ka
 ### Het Motto
 
 DingDung hoopt uitkomst te bieden op de vervelende momenten, en het ‘dagje uit’ zorgeloos te laten verlopen. Daar bovenop wil DingDung een community van toilet-gebruikers creëren en verbinden, en het poep-en-pies-taboe te doorbreken.
+
+### Hoe Het Er Uit Gaat Zien
+[](https://github.com/StefanBonestroo/DingDung/blob/master/doc/Concept%20Visualization.png)
