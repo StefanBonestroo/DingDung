@@ -24,3 +24,19 @@ DingDung hoopt uitkomst te bieden op de vervelende momenten, en het ‘dagje uit
 
 ### Hoe Het Er Uit Gaat Zien
 ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/Concept%20Visualization.png)
+
+### Technische Verduidelijking
+
+#### Data Bronnen & Externe Componenten 
+* [Google Maps API](https://developers.google.com/maps/solutions/store-locator/nyc-subway-locator) - om toiletten in te laden en weer te geven
+
+* [Google Firebase](https://firebase.google.com/) - om users te laten inloggen en weergeven samen met hun ratings, comments, en nabijheid.
+
+#### Vergelijkbare Apps
+* [Couchsurfing](https://www.couchsurfing.com/mobile-hangouts) - De request en rating componenten zijn vergelijkbaar met de componenten die in deze app te vinden zijn.
+
+* [Roamler](https://www.roamler.com) - Hier kunnen requests gedaan worden, daarnaast krijg je op acceptatie van de request verder info. Op een (Google Maps?) kaartje wordt ook de nabijheid van een bepaalde plek weergegeven. Poeper zal een vergelijkbaar systeem gebruiken.
+  
+#### Mogelijke Struikelblokken
+Het is chaotisch (en misschien kost het teveel data) om alle plekken weer te geven, helemaal als je je in een drukke stad bevindt. Ik zal een manier moeten vinden om prioriteiten te gebruiken zodat alleen de relevante opties weergegeven worden.
+
