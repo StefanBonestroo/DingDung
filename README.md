@@ -5,10 +5,7 @@ Stefan Bonestroo - 10500790
 ## Project Proposal
 
 ### Het Probleem
-```
-“Geerte Piening (23) kreeg de boete tijdens een stapavond in 2015. Nadat ze de kroeg had verlaten, moest ze op straat plotseling nodig plassen. Ze mocht het café niet meer in. Er waren in de omgeving nergens openbare toiletten voor vrouwen te vinden. Daarom besloot ze haar behoefte te doen achter een betonblok. Drie politieagenten zagen het en slingerden Piening op de bon.”
-``` 
-- [Source - NRC Handelsblad](https://www.nrc.nl/nieuws/2017/09/18/rechter-handhaaft-boete-voor-wildplassen-a1573866)
+* “Geerte Piening (23) kreeg de boete tijdens een stapavond in 2015. Nadat ze de kroeg had verlaten, moest ze op straat plotseling nodig plassen. Ze mocht het café niet meer in. Er waren in de omgeving nergens openbare toiletten voor vrouwen te vinden. Daarom besloot ze haar behoefte te doen achter een betonblok. Drie politieagenten zagen het en slingerden Piening op de bon.” * - [Source - NRC Handelsblad](https://www.nrc.nl/nieuws/2017/09/18/rechter-handhaaft-boete-voor-wildplassen-a1573866)
 
 Recent werd iedereen door dit relletje weer even herinnert aan die behoeften waar wij als mens aan geketend zijn. Met name in de stad, en met name voor vrouwen, zijn er onvoldoende openbare toiletten waar de grote en kleine behoeften gedaan kunnen worden. Google Maps heeft wel wat openbare toiletten geregistreerd, maar dit zijn vaak enkel de plaskrullen (althans, in Amsterdam). Ook de kinderen (en hun ouders) zijn vaak de dupe van ons chronisch tekort aan wc’s, zij kunnen immers niet zo lang ophouden als volwassenen dat kunnen. Zou het niet fijn zijn als mensen hun toilet beschikbaar kunnen stellen voor de medemens met hoge nood? DingDung wil hier uitkomst te bieden.
 
