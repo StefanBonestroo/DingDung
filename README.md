@@ -35,7 +35,7 @@ DingDung hoopt uitkomst te bieden op de vervelende momenten, en het ‘dagje uit
 #### Vergelijkbare Apps
 * [Couchsurfing](https://www.couchsurfing.com/mobile-hangouts) - De request en rating componenten zijn vergelijkbaar met de componenten die in deze app te vinden zijn.
 
-* [Roamler](https://www.roamler.com) - Hier kunnen requests gedaan worden, daarnaast krijg je op acceptatie van de request verder info. Op een (Google Maps?) kaartje wordt ook de nabijheid van een bepaalde plek weergegeven. Poeper zal een vergelijkbaar systeem gebruiken.
+* [Roamler](https://itunes.apple.com/nl/app/roamler/id440588804) - Hier kunnen requests gedaan worden, daarnaast krijg je op acceptatie van de request verder info. Op een (Google Maps?) kaartje wordt ook de nabijheid van een bepaalde plek weergegeven. Poeper zal een vergelijkbaar systeem gebruiken.
   
 #### Mogelijke Struikelblokken
 Het is chaotisch (en misschien kost het teveel data) om alle plekken weer te geven, helemaal als je je in een drukke stad bevindt. Ik zal een manier moeten vinden om prioriteiten te gebruiken zodat alleen de relevante opties weergegeven worden.
