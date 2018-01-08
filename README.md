@@ -1,6 +1,7 @@
 # DingDung
 Stefan Bonestroo - 10500790
-08-01-2018
+
+Datum: 08-01-2018
 
 ## Project Proposal
 
