@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		0A9FCD212003932800C39922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9FCD202003932800C39922 /* AppDelegate.swift */; };
-		0A9FCD232003932800C39922 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9FCD222003932800C39922 /* ViewController.swift */; };
 		0A9FCD262003932800C39922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9FCD242003932800C39922 /* Main.storyboard */; };
 		0A9FCD282003932800C39922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A9FCD272003932800C39922 /* Assets.xcassets */; };
 		0A9FCD2B2003932800C39922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9FCD292003932800C39922 /* LaunchScreen.storyboard */; };
+		0AC4BEB22003A0150032A2A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4BEB12003A0150032A2A0 /* GoogleService-Info.plist */; };
+		0AF5A6932004D68B0083449F /* ToiletMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */; };
+		B38CC649CF8992E7F74024A5 /* Pods_DingDung.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F10A990C43DEFB99A17174 /* Pods_DingDung.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00F10A990C43DEFB99A17174 /* Pods_DingDung.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DingDung.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09EBC0DCCACF30D132E4D764 /* Pods-DingDung.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DingDung.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DingDung/Pods-DingDung.debug.xcconfig"; sourceTree = "<group>"; };
 		0A9FCD1D2003932700C39922 /* DingDung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingDung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9FCD202003932800C39922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A9FCD222003932800C39922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A9FCD252003932800C39922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A9FCD272003932800C39922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A9FCD2A2003932800C39922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A9FCD2C2003932800C39922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AC4BEB12003A0150032A2A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMapViewController.swift; sourceTree = "<group>"; };
+		CBE6EC6374F9ACF0486C8175 /* Pods-DingDung.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DingDung.release.xcconfig"; path = "Pods/Target Support Files/Pods-DingDung/Pods-DingDung.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38CC649CF8992E7F74024A5 /* Pods_DingDung.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				0A9FCD1F2003932700C39922 /* DingDung */,
 				0A9FCD1E2003932700C39922 /* Products */,
+				8B9093D826C3C025DBE01ABE /* Pods */,
+				C9CC12C5BC6B589891102511 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +64,31 @@
 			isa = PBXGroup;
 			children = (
 				0A9FCD202003932800C39922 /* AppDelegate.swift */,
-				0A9FCD222003932800C39922 /* ViewController.swift */,
 				0A9FCD242003932800C39922 /* Main.storyboard */,
+				0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */,
 				0A9FCD272003932800C39922 /* Assets.xcassets */,
 				0A9FCD292003932800C39922 /* LaunchScreen.storyboard */,
 				0A9FCD2C2003932800C39922 /* Info.plist */,
+				0AC4BEB12003A0150032A2A0 /* GoogleService-Info.plist */,
 			);
 			path = DingDung;
+			sourceTree = "<group>";
+		};
+		8B9093D826C3C025DBE01ABE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				09EBC0DCCACF30D132E4D764 /* Pods-DingDung.debug.xcconfig */,
+				CBE6EC6374F9ACF0486C8175 /* Pods-DingDung.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C9CC12C5BC6B589891102511 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00F10A990C43DEFB99A17174 /* Pods_DingDung.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A9FCD2F2003932800C39922 /* Build configuration list for PBXNativeTarget "DingDung" */;
 			buildPhases = (
+				3928C038D86D6040C2230D4F /* [CP] Check Pods Manifest.lock */,
 				0A9FCD192003932700C39922 /* Sources */,
 				0A9FCD1A2003932700C39922 /* Frameworks */,
 				0A9FCD1B2003932700C39922 /* Resources */,
+				7114364AD01CF26ACD5DF6CC /* [CP] Embed Pods Frameworks */,
+				B3F7F4F80EDABA1AAB41E4E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A9FCD2B2003932800C39922 /* LaunchScreen.storyboard in Resources */,
+				0AC4BEB22003A0150032A2A0 /* GoogleService-Info.plist in Resources */,
 				0A9FCD282003932800C39922 /* Assets.xcassets in Resources */,
 				0A9FCD262003932800C39922 /* Main.storyboard in Resources */,
 			);
@@ -131,12 +162,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3928C038D86D6040C2230D4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7114364AD01CF26ACD5DF6CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DingDung/Pods-DingDung-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F7F4F80EDABA1AAB41E4E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DingDung/Pods-DingDung-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0A9FCD192003932700C39922 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A9FCD232003932800C39922 /* ViewController.swift in Sources */,
+				0AF5A6932004D68B0083449F /* ToiletMapViewController.swift in Sources */,
 				0A9FCD212003932800C39922 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +351,7 @@
 		};
 		0A9FCD302003932800C39922 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09EBC0DCCACF30D132E4D764 /* Pods-DingDung.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +367,7 @@
 		};
 		0A9FCD312003932800C39922 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBE6EC6374F9ACF0486C8175 /* Pods-DingDung.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
