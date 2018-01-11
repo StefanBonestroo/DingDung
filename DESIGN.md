@@ -9,10 +9,10 @@
     * Username
     * Password Hash
     * Toilet Info
-     * Toilet Picture Hyperlink
-     * Toilet Name
-     * Toilet Description
-     * Toilet Address
+      * Toilet Picture Hyperlink
+      * Toilet Name
+      * Toilet Description
+      * Toilet Address
     * Current Request
       * Request Status
     * Pending Requests
