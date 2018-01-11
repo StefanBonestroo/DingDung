@@ -396,6 +396,9 @@
                                 <state key="normal" title="SUBMIT">
                                     <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="2mV-iF-D79" kind="show" id="oTD-WB-wbn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-op-oAY">
                                 <rect key="frame" x="252" y="327" width="71" height="30"/>
@@ -444,9 +447,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2cd-UT-YNj"/>
                     </view>
-                    <connections>
-                        <segue destination="2mV-iF-D79" kind="show" id="ETO-fM-kDC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qka-MS-AlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -748,6 +748,6 @@
         <image name="profile" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ab4-J5-pPn"/>
+        <segue reference="oTD-WB-wbn"/>
     </inferredMetricsTieBreakers>
 </document>
