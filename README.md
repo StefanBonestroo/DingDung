@@ -1,4 +1,6 @@
 # DingDung
+[![BCH compliance](https://bettercodehub.com/edge/badge/StefanBonestroo/DingDung?branch=master)](https://bettercodehub.com/)
+
 Stefan Bonestroo - 10500790
 
 Datum: 08-01-2018
