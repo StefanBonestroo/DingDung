@@ -8,10 +8,11 @@
   * Userkey
     * Username
     * Password Hash
-    * Toilet Picture Hyperlink
-    * Toilet Name
-    * Toilet Description
-    * Toilet Address
+    * Toilet Info
+     * Toilet Picture Hyperlink
+     * Toilet Name
+     * Toilet Description
+     * Toilet Address
     * Current Request
       * Request Status
     * Pending Requests
