@@ -9,6 +9,7 @@ target 'DingDung' do
 
   # Pods for DingDung
 	pod 'Firebase/Core'
+    pod 'Firebase/Auth'
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'GooglePlacePicker'
