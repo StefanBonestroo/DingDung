@@ -1,4 +1,4 @@
-# Process made:
+# Process Book
 ## day 2
 Vandaag heb ik gewerkt aan het afronden van de Sign Up functie. Hierbij hoorde ook de nodige problemen met de ImagePickerViewController() uit de UIKit. Aangezien dit een programmatisch geinitialiseerde view controller is, zijn segues vanaf die picker onmogelijk te sturen. Ik heb uiteindelijk een tussenschermpje geplaatst voor tijdens het maken van een foto zodat, wanneer deze sluit, er later nog een uitleg van de app ingeplakt kan worden (het liefst in ‘pagina view’).
 
