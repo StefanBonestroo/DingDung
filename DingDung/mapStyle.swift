@@ -9,6 +9,7 @@
 import Foundation
 
 struct mapStyles {
+    
     static let basicLayout = "[" +
         "{" +
         "    \"elementType\": \"labels\"," +

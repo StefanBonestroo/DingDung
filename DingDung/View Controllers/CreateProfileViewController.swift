@@ -7,37 +7,54 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
-class CreateProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateProfileViewController: UIViewController {
 
+    let currentUser = Auth.auth().currentUser
+    let ref = Database.database().reference()
+    let userID = Auth.auth().currentUser?.uid
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var toiletnameTextField: UITextField!
     @IBOutlet weak var toiletDescriptionTextField: UITextView!
-    
     
     // Initiates the camera
     // (Source: https://www.ioscreator.com/tutorials/take-photo-tutorial-ios8-swift)
     @IBAction func takePicture(_ sender: UIButton) {
         
-        func createProfileAlert (message: String) {
-            let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        if usernameTextField.text == "" ||
+            toiletnameTextField.text! == "" ||
+            toiletDescriptionTextField.text! == "" {
             
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
-        }
-        
-        if usernameTextField.text == "" || toiletnameTextField.text! == "" || toiletDescriptionTextField.text! == "" {
             createProfileAlert(message: "A field was left empty.")
+            
         } else if (usernameTextField.text!.count < 5 && usernameTextField.text!.count > 21) ||
-            (toiletnameTextField.text!.count < 5 && toiletnameTextField.text!.count > 21) {
+                (toiletnameTextField.text!.count < 5 && toiletnameTextField.text!.count > 21) {
+            
             createProfileAlert(message: "Username and Toilet Name should be between 6 and 20 characters long")
-        } else if toiletDescriptionTextField.text!.count > 19 && toiletDescriptionTextField.text!.count < 201 {
+            
+        } else if toiletDescriptionTextField.text!.count > 19 &&
+                toiletDescriptionTextField.text!.count < 201 {
+            
             createProfileAlert(message: "Your Toilet Description should be between 20 and 200 characters long")
+            
         } else {
+            storeData()
             performSegue(withIdentifier: "toCamera", sender: nil)
         }
+    }
+    
+    func createProfileAlert (message: String) {
+        
+        let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func dismissKeyboard() {
@@ -48,6 +65,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate, UIText
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         if(text == "\n") {
+            
             toiletDescriptionTextField.resignFirstResponder()
             return false
         }
@@ -58,6 +76,21 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate, UIText
         usernameTextField.resignFirstResponder()
         toiletnameTextField.resignFirstResponder()
         return true
+    }
+    
+    // Stores userdata in the database
+    func storeData() {
+        
+        let userReference = self.ref.child("users").child(userID!)
+        
+        userReference.setValue(["username": usernameTextField.text!,
+                                "email": currentUser!.email!,
+                                "toiletStatus": "false"])
+        
+        userReference.child("toiletInfo").setValue(["username": usernameTextField.text!,
+                                                    "toiletName": toiletnameTextField.text!,
+                                                    "toiletDescription": toiletDescriptionTextField.text!])
+        
     }
     
     override func viewDidLoad() {
@@ -72,4 +105,12 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate, UIText
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+// Makes dismissal of the keyboard/typer possible
+extension CreateProfileViewController: UITextFieldDelegate {
+}
+
+// Makes dismissal of the keyboard/typer possible
+extension CreateProfileViewController: UITextViewDelegate {
 }
