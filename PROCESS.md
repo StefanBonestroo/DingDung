@@ -13,7 +13,6 @@ Ik heb besloten van het 'uitleg-tussenschermpje' een scherm te maken waar de use
 
 Morgen ben ik van plan het laatste deel hiervan te doen, dat is het storen van de genomen toilet foto aka profielfoto. Hier moet ik de Firebase Storage gebruiken en het linkje naar de profielfoto in de database opslaan. Verder moet ik ook even beslissen in welke taal ik mijn repo wil presenteren, dit is nu een beetje inconsequent
 
-
 # Design ideetjes:
 
 * Openingstijden toilet
