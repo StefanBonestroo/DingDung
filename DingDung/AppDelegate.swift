@@ -18,13 +18,14 @@ import GooglePlacePicker
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let myMapsAPI = "AIzaSyCtc0MBHtrnlVcneVVTxKo0_zNPSJryncw"
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
             FirebaseApp.configure()
-            GMSServices.provideAPIKey("AIzaSyCtc0MBHtrnlVcneVVTxKo0_zNPSJryncw")
-            GMSPlacesClient.provideAPIKey("AIzaSyCtc0MBHtrnlVcneVVTxKo0_zNPSJryncw")
+            GMSServices.provideAPIKey(myMapsAPI)
+            GMSPlacesClient.provideAPIKey(myMapsAPI)
             return true
     }
 }

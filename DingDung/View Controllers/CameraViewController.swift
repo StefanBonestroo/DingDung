@@ -6,17 +6,23 @@
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import CoreLocation
+
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class CameraViewController: UIViewController {
     
+    // References to current user and database
     let currentUser = Auth.auth().currentUser
     let ref = Database.database().reference()
-    let userID = Auth.auth().currentUser?.uid
+    let userID = Auth.auth().currentUser!.uid
     
+    var succesfulCoordinates = false
     var imagePicker: UIImagePickerController!
     var taken = false
     
@@ -37,7 +43,11 @@ class CameraViewController: UIViewController {
     
     @IBAction func goButtonPressed(_ sender: UIButton) {
         storeAddressData()
-        performSegue(withIdentifier: "toMap", sender: nil)
+        
+        // Address needs to be adjusted if coordinates can't be calculated
+        if succesfulCoordinates {
+            performSegue(withIdentifier: "toMap", sender: nil)
+        }
     }
     
     // Lets user take a photo and saves that to Firebase database
@@ -80,12 +90,20 @@ class CameraViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // Removes the subview if a picture is taken
+    // Makes sure the image is passed on to save when 'Use Photo' is pressed
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        saveImage(chosenImage)
+        
+        self.taken = true
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Removes the subview if cancel is pressed
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         imagePicker.view!.removeFromSuperview()
         imagePicker.removeFromParentViewController()
-        taken = true
     }
     
     // Changes the Camera view to a view where addresses are entered
@@ -120,14 +138,84 @@ class CameraViewController: UIViewController {
     // Stores the street address, city, state, and country that the users entered
     func storeAddressData() {
         
-        let userReference = self.ref.child("users").child(userID!)
+        let userReference = self.ref.child("users").child(self.userID)
+        saveCoordinates(userReference)
         
-        userReference.child("toiletAddressInfo").setValue(["streetAddress": streetAddressText.text!,
+        if self.succesfulCoordinates {
+            userReference.child("toiletAddressInfo").updateChildValues(["streetAddress": streetAddressText.text!,
                                                            "city": cityText.text!,
                                                            "provinceOrState": provinceOrStateText.text!,
                                                            "country": countryText.text!])
+        }
+    }
+    
+    // Stores image in Firebase storage and saves its reference in the database
+    func saveImage(_ image: UIImage) {
+        
+        let profileRef = Storage.storage().reference().child("profilePictures")
+        
+        if let uploadData = UIImagePNGRepresentation(image) {
+            
+            profileRef.child("\(userID).png").putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    
+                    self.imagePicker.view!.removeFromSuperview()
+                    self.imagePicker.removeFromParentViewController()
+                    
+                    self.createAlert("Something went wrong uploading your picture. Try retaking it some other time.")
+                    return
+                }
+                
+                let downloadURL = String(describing: metadata!.downloadURL()!)
+                let userReference = self.ref.child("users").child(self.userID)
+                
+                userReference.updateChildValues(["profilePicture": "\(downloadURL)"])
+            }
+        }
+    }
+    
+    // Geocodes an address into a set of coordinates and saves those to the database
+    // Sources: https://stackoverflow.com/questions/42279252/convert-address-to-coordinates-swift
+    func saveCoordinates(_ userReference: DatabaseReference) {
+        
+        // Makes a readable string of the address
+        let addressString = "\(streetAddressText.text!), \(cityText.text!), \(provinceOrStateText.text!), \(countryText.text!)"
+        
+        let geocoder = CLGeocoder()
+        
+        // Uses the CLGeocoder() to get the coordinates
+        // Presents user with error if something went wrong
+        geocoder.geocodeAddressString(addressString) { placemarks, error in
+            if error != nil {
+                
+                self.succesfulCoordinates = false
+                self.createAlert("This is not a valid address. Try adjusting it a bit.")
+            } else {
+                
+                self.succesfulCoordinates = true
+                let placemark = placemarks?.first
+                let lat = placemark?.location?.coordinate.latitude
+                let long = placemark?.location?.coordinate.longitude
+            
+                // Saves those to database
+                userReference.child("toiletInfo").updateChildValues(["latitude": lat!, "longitude": long!])
+            }
+        }
+    }
+    
+    func createAlert(_ message: String) {
+        
+        let alert = UIAlertController(title: "Oops!",
+                                      message: message,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
+
 
 // Makes dismissal of the keyboard/typer possible
 extension CameraViewController: UITextFieldDelegate {
