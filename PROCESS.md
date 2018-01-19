@@ -13,6 +13,13 @@ Ik heb besloten van het 'uitleg-tussenschermpje' een scherm te maken waar de use
 
 Morgen ben ik van plan het laatste deel hiervan te doen, dat is het storen van de genomen toilet foto aka profielfoto. Hier moet ik de Firebase Storage gebruiken en het linkje naar de profielfoto in de database opslaan. Verder moet ik ook even beslissen in welke taal ik mijn repo wil presenteren, dit is nu een beetje inconsequent
 
+## day 5
+De implementatie van de hele database/storage backend is nu compleet en klaar om opgehaald te worden in andere views. Een referentie naar storage locatie van de profielfoto wordt ook opgeslagen in de database. Verder heb ik gebruik gemaakt van de CLGeocoder( ) om het ingevulde adres om te zetten in coordinaten, zodat het adres zelf enkel bij een geaccepteerde request opgehaald hoeft te worden (coordinaten zijn hier voor het weergeven op de map).
+
+Ik twijfel alleen nog over de camera viewcontroller, die nu een view deelt met het adres-invul schermpje (misschien moet ik die voor overzicht splitsen). Ik moet nog even uitvinden hoe ik die opgehaalde data tijdelijk in het geheugen van de telefoon kan houden, zodat deze niet bij elke segue opgehaald moet worden.
+
+
+
 # Design ideetjes:
 
 * Openingstijden toilet
