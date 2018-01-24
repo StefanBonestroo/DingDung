@@ -142,10 +142,11 @@ class CameraViewController: UIViewController {
         saveCoordinates(userReference)
         
         if self.succesfulCoordinates {
-            userReference.child("toiletAddressInfo").updateChildValues(["streetAddress": streetAddressText.text!,
-                                                           "city": cityText.text!,
-                                                           "provinceOrState": provinceOrStateText.text!,
-                                                           "country": countryText.text!])
+            userReference.child("toiletAddressInfo")
+                .updateChildValues(["streetAddress": streetAddressText.text!,
+                                    "city": cityText.text!,
+                                    "provinceOrState": provinceOrStateText.text!,
+                                    "country": countryText.text!])
         }
     }
     
@@ -198,7 +199,7 @@ class CameraViewController: UIViewController {
                 let long = placemark?.location?.coordinate.longitude
             
                 // Saves those to database
-                userReference.child("toiletInfo").updateChildValues(["latitude": lat!, "longitude": long!])
+                userReference.updateChildValues(["latitude": lat!, "longitude": long!])
             }
         }
     }

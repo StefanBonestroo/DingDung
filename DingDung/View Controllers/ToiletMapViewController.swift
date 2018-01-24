@@ -6,23 +6,55 @@
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
 
+import Foundation
 import UIKit
+
+import Firebase
 import GoogleMaps
 import GooglePlaces
 
 class ToiletMapViewController: UIViewController {
     
-    func initiateMapView() {
-        let zoomLevel: Float = 15.0
+    let locationManager = CLLocationManager()
+    
+    var mapView = GMSMapView()
+    var currentLocation: CLLocation?
+    var placesClient: GMSPlacesClient!
+    
+    var userInfoReference = Database.database().reference().child("users")
+    let userID = Auth.auth().currentUser?.uid
+    
+    var availableToilets: [mapToilet] = []
+    var toiletMarkers: [GMSMarker] = []
+    var markerIcon = UIImage(named: "markericon.png")!.withRenderingMode(.alwaysTemplate)
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        /// A default location (Amsterdam Science Park) to use when location permission is not granted.
-        let defaultLocation = CLLocation(latitude: 52.35445147, longitude: 4.95559573)
+        super.viewDidAppear(animated)
+        self.locationManager.startUpdatingLocation()
         
-        // Sets the camera to fix to the current location
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-                                              longitude: defaultLocation.coordinate.longitude,
-                                              zoom: zoomLevel)
-        let mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+    
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        locationManager.delegate = self
+
+        // Sets the camera to fix to a basic location
+        let camera = GMSCameraPosition.camera(withLatitude: 52.35445147,
+                                              longitude: 4.95559573,
+                                              zoom: 15.0)
+        
+        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         
         do {
             // Styles the map
@@ -31,16 +63,75 @@ class ToiletMapViewController: UIViewController {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
         
-        view = mapView
+        self.locationManager.startUpdatingLocation()
+        self.view = mapView
+        
+        getToilets()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initiateMapView()
+    // Displays toilets within view as markers
+    func showToiletsOnMap() {
+        
+        let toilets = self.availableToilets
+        
+        for toilet in toilets {
+            
+            let marker = GMSMarker(position: toilet.location!)
+            
+            marker.map = mapView
+            marker.icon = self.markerIcon
+            marker.title = "\(toilet.toiletName!)"
+            marker.snippet = "\(toilet.username!)"
+            
+            self.toiletMarkers.append(marker)
+        }
     }
+    
+    // Requests the database for some basic info on the toilets that are open for use
+    func getToilets() {
+        
+        userInfoReference.observe(.childAdded, with: { (snapshot) in
+            if let request = snapshot.value as? [String: AnyObject] {
 
+                let toilet = mapToilet()
+
+                // If a toilet is available, store some basic info for display on map
+                if request["toiletStatus"] as? String == "true" {
+
+                    var coordinates: CLLocationCoordinate2D {
+                        return CLLocationCoordinate2D (latitude: request["latitude"]! as! Double,
+                                                       longitude: request["longitude"] as! Double)
+                    }
+
+                    toilet.username = request["username"] as? String
+                    toilet.owner = request["userID"] as? String
+                    toilet.toiletName = request["toiletName"] as? String
+                    toilet.location = coordinates
+
+                    print("Adding \(toilet)")
+                    self.availableToilets.append(toilet)
+                }
+            }
+            self.showToiletsOnMap()
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+}
+
+extension ToiletMapViewController: CLLocationManagerDelegate {
+    
+    // Handles proper location authorization and completion
+    // Source: https://stackoverflow.com/questions/37412581/cant-get-current-location-gps-on-google-maps-ios-sdk
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            mapView.camera = GMSCameraPosition(target: location.coordinate,
+                                               zoom: 15,
+                                               bearing: 0,
+                                               viewingAngle: 0)
+        }
     }
 }

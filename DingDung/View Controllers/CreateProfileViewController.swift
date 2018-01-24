@@ -36,8 +36,8 @@ class CreateProfileViewController: UIViewController {
             
             createProfileAlert(message: "Username and Toilet Name should be between 6 and 20 characters long")
             
-        } else if toiletDescriptionTextField.text!.count > 19 &&
-                toiletDescriptionTextField.text!.count < 201 {
+        } else if toiletDescriptionTextField.text!.count < 19 &&
+                toiletDescriptionTextField.text!.count > 201 {
             
             createProfileAlert(message: "Your Toilet Description should be between 20 and 200 characters long")
             
@@ -83,13 +83,13 @@ class CreateProfileViewController: UIViewController {
         
         let userReference = self.ref.child("users").child(userID!)
         
-        userReference.setValue(["username": usernameTextField.text!,
-                                "email": currentUser!.email!,
-                                "toiletStatus": "false"])
+        userReference.updateChildValues(["username": usernameTextField.text!,
+                                         "userID": self.userID!,
+                                         "email": currentUser!.email!,
+                                         "toiletStatus": "false"])
         
-        userReference.child("toiletInfo").setValue(["username": usernameTextField.text!,
-                                                    "toiletName": toiletnameTextField.text!,
-                                                    "toiletDescription": toiletDescriptionTextField.text!])
+        userReference.updateChildValues(["toiletName": toiletnameTextField.text!,
+                                         "toiletDescription": toiletDescriptionTextField.text!])
         
     }
     
