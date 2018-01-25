@@ -16,6 +16,7 @@ import GooglePlaces
 class ToiletMapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    let zoomLevel: Float = 14.0
     
     var mapView = GMSMapView()
     var currentLocation: CLLocation?
@@ -35,10 +36,11 @@ class ToiletMapViewController: UIViewController {
         
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-    
+        mapView.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        
         super.viewDidDisappear(animated)
         self.locationManager.stopUpdatingLocation()
     }
@@ -52,9 +54,11 @@ class ToiletMapViewController: UIViewController {
         // Sets the camera to fix to a basic location
         let camera = GMSCameraPosition.camera(withLatitude: 52.35445147,
                                               longitude: 4.95559573,
-                                              zoom: 15.0)
+                                              zoom: zoomLevel)
         
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapView.setMinZoom(zoomLevel, maxZoom: zoomLevel)
+
         
         do {
             // Styles the map
@@ -82,6 +86,7 @@ class ToiletMapViewController: UIViewController {
             marker.icon = self.markerIcon
             marker.title = "\(toilet.toiletName!)"
             marker.snippet = "\(toilet.username!)"
+            marker.tracksInfoWindowChanges = true
             
             self.toiletMarkers.append(marker)
         }
@@ -107,13 +112,16 @@ class ToiletMapViewController: UIViewController {
                     toilet.owner = request["userID"] as? String
                     toilet.toiletName = request["toiletName"] as? String
                     toilet.location = coordinates
-
-                    print("Adding \(toilet)")
+                    
                     self.availableToilets.append(toilet)
                 }
             }
             self.showToiletsOnMap()
         })
+    }
+    
+    @ IBAction func closeDetails(segue: UIStoryboardSegue) {
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,11 +135,22 @@ extension ToiletMapViewController: CLLocationManagerDelegate {
     // Source: https://stackoverflow.com/questions/37412581/cant-get-current-location-gps-on-google-maps-ios-sdk
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
+        
         if let location = locations.first {
-            mapView.camera = GMSCameraPosition(target: location.coordinate,
+            
+            let newPosition = GMSCameraPosition(target: location.coordinate,
                                                zoom: 15,
                                                bearing: 0,
                                                viewingAngle: 0)
+            mapView.animate(to: newPosition)
         }
+    }
+}
+
+extension ToiletMapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("Hi")
+        self.performSegue(withIdentifier: "toDetails", sender: nil)
     }
 }

@@ -26,6 +26,9 @@ class CameraViewController: UIViewController {
     var imagePicker: UIImagePickerController!
     var taken = false
     
+    // Range 0 to 1
+    var imageQuality: CGFloat = 0.5
+    
     @IBOutlet weak var waiting: UIActivityIndicatorView!
     
     @IBOutlet weak var personalInformationTitle: UILabel!
@@ -42,11 +45,24 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var letsGoButton: UIButton!
     
     @IBAction func goButtonPressed(_ sender: UIButton) {
-        storeAddressData()
         
-        // Address needs to be adjusted if coordinates can't be calculated
-        if succesfulCoordinates {
-            performSegue(withIdentifier: "toMap", sender: nil)
+        let userReference = self.ref.child("users").child(self.userID)
+        saveCoordinates(userReference)
+        
+        if self.succesfulCoordinates {
+            userReference.child("toiletAddressInfo")
+                .updateChildValues(["streetAddress": streetAddressText.text!,
+                                    "city": cityText.text!,
+                                    "provinceOrState": provinceOrStateText.text!,
+                                    "country": countryText.text!], withCompletionBlock: {_,_ in
+                                        
+                                        // Address needs to be adjusted if coordinates can't be calculated
+                                        if self.succesfulCoordinates {
+                                            self.performSegue(withIdentifier: "toMap", sender: nil)
+                                        } else {
+                                            self.createAlert("Could not store this address, as it cannot be converted to coordinates")
+                                        }
+                })
         }
     }
     
@@ -135,29 +151,14 @@ class CameraViewController: UIViewController {
         return true
     }
     
-    // Stores the street address, city, state, and country that the users entered
-    func storeAddressData() {
-        
-        let userReference = self.ref.child("users").child(self.userID)
-        saveCoordinates(userReference)
-        
-        if self.succesfulCoordinates {
-            userReference.child("toiletAddressInfo")
-                .updateChildValues(["streetAddress": streetAddressText.text!,
-                                    "city": cityText.text!,
-                                    "provinceOrState": provinceOrStateText.text!,
-                                    "country": countryText.text!])
-        }
-    }
-    
     // Stores image in Firebase storage and saves its reference in the database
     func saveImage(_ image: UIImage) {
         
         let profileRef = Storage.storage().reference().child("profilePictures")
         
-        if let uploadData = UIImagePNGRepresentation(image) {
+        if let uploadData = UIImageJPEGRepresentation(image, imageQuality) {
             
-            profileRef.child("\(userID).png").putData(uploadData, metadata: nil) { (metadata, error) in
+            profileRef.child("\(userID).jpg").putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     
                     self.imagePicker.view!.removeFromSuperview()
@@ -171,7 +172,7 @@ class CameraViewController: UIViewController {
                 let userReference = self.ref.child("users").child(self.userID)
                 
                 userReference.updateChildValues(["profilePicture": "\(downloadURL)"])
-            }
+            }.resume()
         }
     }
     
@@ -193,13 +194,14 @@ class CameraViewController: UIViewController {
                 self.createAlert("This is not a valid address. Try adjusting it a bit.")
             } else {
                 
-                self.succesfulCoordinates = true
                 let placemark = placemarks?.first
                 let lat = placemark?.location?.coordinate.latitude
                 let long = placemark?.location?.coordinate.longitude
             
                 // Saves those to database
-                userReference.updateChildValues(["latitude": lat!, "longitude": long!])
+                userReference.updateChildValues(["latitude": lat!, "longitude": long!], withCompletionBlock: {_,_ in
+                    self.succesfulCoordinates = true
+                })
             }
         }
     }
