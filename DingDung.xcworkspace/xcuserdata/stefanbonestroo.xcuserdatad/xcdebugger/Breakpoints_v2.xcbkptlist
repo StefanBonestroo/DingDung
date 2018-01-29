@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/ToiletMapViewController.swift"
-            timestampString = "538588695.820214"
+            timestampString = "538961729.2612979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "showToiletsOnMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/ToiletMapViewController.swift"
-            timestampString = "538588695.820336"
+            timestampString = "538961729.261422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "getToilets()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/ToiletMapViewController.swift"
-            timestampString = "538588695.820437"
+            timestampString = "538961729.261529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "showToiletsOnMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/ToiletMapViewController.swift"
-            timestampString = "538588695.820528"
+            timestampString = "538961729.2616301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/ToiletMapViewController.swift"
-            timestampString = "538588695.820887"
+            timestampString = "538961729.261952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "showToiletsOnMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.820967"
+            timestampString = "538961729.262048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "getImage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.821058"
+            timestampString = "538961729.262145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -184,7 +184,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.821305"
+            timestampString = "538961729.262383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -262,7 +262,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.821391"
+            timestampString = "538961729.262494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.821478"
+            timestampString = "538961729.2625999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DingDung/View Controllers/UserProfileViewController.swift"
-            timestampString = "538588695.8215539"
+            timestampString = "538961729.262683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "updateUserInfo()"
             landmarkType = "7">
             <Locations>
@@ -395,6 +395,230 @@
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/ToiletDetailsViewController.swift"
+            timestampString = "538961729.262769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "getImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/ToiletDetailsViewController.swift"
+            timestampString = "538961729.2629679"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "getImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in DingDung.ToiletDetailsViewController.getImage() -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/ToiletDetailsViewController.swift"
+                  timestampString = "538857390.8794349"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1048">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in DingDung.ToiletDetailsViewController.getImage() -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/ToiletDetailsViewController.swift"
+                  timestampString = "538857390.88165"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.2630399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "getToiletInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.263821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "cancelButtonPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DingDung.MyRequestViewController.cancelButtonPressed(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/MyRequestViewController.swift"
+                  timestampString = "538951387.874481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in DingDung.MyRequestViewController.cancelButtonPressed(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/MyRequestViewController.swift"
+                  timestampString = "538951387.87667"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.264153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "cancelButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.2644449"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "loadCurrentRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.264762"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "loadCurrentRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DingDung.MyRequestViewController.loadCurrentRequest() -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/MyRequestViewController.swift"
+                  timestampString = "538961729.4875489"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in DingDung.MyRequestViewController.loadCurrentRequest() -&gt; ()"
+                  moduleName = "DingDung"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanbonestroo/Documents/Bachelor_Psychobiologie/Programmeren/Native%20App%20Studio/Projectjes/Final%20Project/DingDung/DingDung/View%20Controllers/MyRequestViewController.swift"
+                  timestampString = "538961729.489657"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DingDung/View Controllers/MyRequestViewController.swift"
+            timestampString = "538961729.265051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "loadCurrentRequest()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

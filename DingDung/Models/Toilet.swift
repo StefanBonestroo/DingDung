@@ -1,5 +1,5 @@
 //
-//  mapToilet.swift
+//  Toilet.swift
 //  DingDung
 //
 //  Created by Stefan Bonestroo on 17-01-18.
@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class mapToilet: NSObject {
+class Toilet: NSObject {
     
     var username: String?
     var owner: String?
     var toiletName: String?
+    var toiletDescription: String?
+    var profilePicture: String?
     var location: CLLocationCoordinate2D?
 }

@@ -20,7 +20,7 @@
 		0AA2FA932007D7AE00F84DC8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2FA922007D7AE00F84DC8 /* CameraViewController.swift */; };
 		0AA2FA95200CE98C00F84DC8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2FA94200CE98C00F84DC8 /* LogInViewController.swift */; };
 		0AA2FA97200CF33200F84DC8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2FA96200CF33200F84DC8 /* UserProfileViewController.swift */; };
-		0AA2FA9D200F755500F84DC8 /* mapToilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2FA9C200F755500F84DC8 /* mapToilet.swift */; };
+		0AA2FA9D200F755500F84DC8 /* Toilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2FA9C200F755500F84DC8 /* Toilet.swift */; };
 		0AC4BEB22003A0150032A2A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4BEB12003A0150032A2A0 /* GoogleService-Info.plist */; };
 		0AF5A6932004D68B0083449F /* ToiletMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */; };
 		B38CC649CF8992E7F74024A5 /* Pods_DingDung.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F10A990C43DEFB99A17174 /* Pods_DingDung.framework */; };
@@ -44,7 +44,7 @@
 		0AA2FA922007D7AE00F84DC8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0AA2FA94200CE98C00F84DC8 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0AA2FA96200CF33200F84DC8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		0AA2FA9C200F755500F84DC8 /* mapToilet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapToilet.swift; sourceTree = "<group>"; };
+		0AA2FA9C200F755500F84DC8 /* Toilet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toilet.swift; sourceTree = "<group>"; };
 		0AC4BEB12003A0150032A2A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMapViewController.swift; sourceTree = "<group>"; };
 		CBE6EC6374F9ACF0486C8175 /* Pods-DingDung.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DingDung.release.xcconfig"; path = "Pods/Target Support Files/Pods-DingDung/Pods-DingDung.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		0A3406092018983C008212B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0AA2FA9C200F755500F84DC8 /* mapToilet.swift */,
+				0AA2FA9C200F755500F84DC8 /* Toilet.swift */,
 				0AA2FA8920077E8300F84DC8 /* mapStyle.swift */,
 				0A34060C201A06E3008212B6 /* userInfo.swift */,
 			);
@@ -108,13 +108,13 @@
 		0AA2FA8B20078B7400F84DC8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */,
+				0AA2FA94200CE98C00F84DC8 /* LogInViewController.swift */,
 				0AA2FA8C20078BB600F84DC8 /* SignUpViewController.swift */,
 				0AA2FA8E200798B900F84DC8 /* CreateProfileViewController.swift */,
 				0AA2FA922007D7AE00F84DC8 /* CameraViewController.swift */,
-				0AA2FA94200CE98C00F84DC8 /* LogInViewController.swift */,
-				0AA2FA96200CF33200F84DC8 /* UserProfileViewController.swift */,
+				0AF5A6922004D68B0083449F /* ToiletMapViewController.swift */,
 				0A34060A2018DC92008212B6 /* ToiletDetailsViewController.swift */,
+				0AA2FA96200CF33200F84DC8 /* UserProfileViewController.swift */,
 				0A34060E201A372F008212B6 /* MyRequestViewController.swift */,
 			);
 			path = "View Controllers";
@@ -266,7 +266,7 @@
 				0AA2FA97200CF33200F84DC8 /* UserProfileViewController.swift in Sources */,
 				0A9FCD212003932800C39922 /* AppDelegate.swift in Sources */,
 				0AA2FA8D20078BB600F84DC8 /* SignUpViewController.swift in Sources */,
-				0AA2FA9D200F755500F84DC8 /* mapToilet.swift in Sources */,
+				0AA2FA9D200F755500F84DC8 /* Toilet.swift in Sources */,
 				0A34060F201A372F008212B6 /* MyRequestViewController.swift in Sources */,
 				0AA2FA95200CE98C00F84DC8 /* LogInViewController.swift in Sources */,
 				0AA2FA8F200798B900F84DC8 /* CreateProfileViewController.swift in Sources */,

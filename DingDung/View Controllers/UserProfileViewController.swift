@@ -20,8 +20,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var openSwitch: UISwitch!
-    
-    
+    @IBOutlet weak var loadingImage: UIActivityIndicatorView!
     
     var picture: UIImage?
     
@@ -92,6 +91,7 @@ class UserProfileViewController: UIViewController {
                     print(error)
                 } else {
                     self.profilePicture.image = UIImage(data: data!)
+                    self.loadingImage.isHidden = true
                 }
             }
         }

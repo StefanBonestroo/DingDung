@@ -16,7 +16,8 @@ import GooglePlaces
 class ToiletMapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
-    let zoomLevel: Float = 14.0
+    let zoomLevel: Float = 15.0
+    var locked = true
     
     var mapView = GMSMapView()
     var currentLocation: CLLocation?
@@ -25,8 +26,8 @@ class ToiletMapViewController: UIViewController {
     var userInfoReference = Database.database().reference().child("users")
     let userID = Auth.auth().currentUser?.uid
     
-    var availableToilets: [mapToilet] = []
-    var toiletMarkers: [GMSMarker] = []
+    var availableToilets: [Toilet] = []
+    var toiletClicked: Toilet = Toilet()
     var markerIcon = UIImage(named: "markericon.png")!.withRenderingMode(.alwaysTemplate)
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,8 +88,6 @@ class ToiletMapViewController: UIViewController {
             marker.title = "\(toilet.toiletName!)"
             marker.snippet = "\(toilet.username!)"
             marker.tracksInfoWindowChanges = true
-            
-            self.toiletMarkers.append(marker)
         }
     }
     
@@ -98,7 +97,7 @@ class ToiletMapViewController: UIViewController {
         userInfoReference.observe(.childAdded, with: { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
 
-                let toilet = mapToilet()
+                let toilet = Toilet()
 
                 // If a toilet is available, store some basic info for display on map
                 if request["toiletStatus"] as? String == "true" {
@@ -111,12 +110,15 @@ class ToiletMapViewController: UIViewController {
                     toilet.username = request["username"] as? String
                     toilet.owner = request["userID"] as? String
                     toilet.toiletName = request["toiletName"] as? String
+                    toilet.toiletDescription = request["toiletDescription"] as? String
+                    toilet.profilePicture = request["profilePicture"] as? String
                     toilet.location = coordinates
                     
                     self.availableToilets.append(toilet)
                 }
             }
             self.showToiletsOnMap()
+            self.locked = false
         })
     }
     
@@ -137,12 +139,14 @@ extension ToiletMapViewController: CLLocationManagerDelegate {
                          didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.first {
-            
-            let newPosition = GMSCameraPosition(target: location.coordinate,
-                                               zoom: 15,
-                                               bearing: 0,
-                                               viewingAngle: 0)
-            mapView.animate(to: newPosition)
+            if locked {
+                
+                let newPosition = GMSCameraPosition(target: location.coordinate,
+                                                    zoom: 15,
+                                                    bearing: 0,
+                                                    viewingAngle: 0)
+                mapView.animate(to: newPosition)
+            }
         }
     }
 }
@@ -150,7 +154,18 @@ extension ToiletMapViewController: CLLocationManagerDelegate {
 extension ToiletMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("Hi")
-        self.performSegue(withIdentifier: "toDetails", sender: nil)
+        
+        for toilet in availableToilets {
+            if toilet.username == marker.snippet {
+                self.toiletClicked = toilet
+                self.performSegue(withIdentifier: "toDetails", sender: nil)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ToiletDetailsViewController {
+            destination.toiletInfo = self.toiletClicked
+        }
     }
 }
