@@ -33,6 +33,9 @@ class MyRequestViewController: UIViewController {
     let userInfoReference = Database.database().reference().child("users")
     let userID = Auth.auth().currentUser?.uid
     
+    var cancelHandler: DatabaseHandle?
+    var iWentHandler: DatabaseHandle?
+    
     var image: UIImage?
     
     var greenColor = UIColor.init(red: 0, green: 204/255, blue: 102/255, alpha: 1)
@@ -41,7 +44,9 @@ class MyRequestViewController: UIViewController {
     var receiver: String?
     var message = ""
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         loadCurrentRequest()
     }
     override func viewDidLoad() {
@@ -49,46 +54,61 @@ class MyRequestViewController: UIViewController {
     }
     
     @IBAction func iWentButtonPressed(_ sender: UIButton) {
-        
-        requestReference.observe(.childAdded, with: { (snapshot) in
+            
+        self.iWentHandler = requestReference.child("current").observe(.childAdded, with: { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
                 
                 if request["sender"] as? String == self.userID! &&
                     request["receiver"] as? String == self.receiver {
                     
-                    self.requestReference.child(snapshot.key).updateChildValues(["status": "completed",
-                                                                                 "load": "history"])
+                    self.moveToHistory(snapshot.key, status: "completed")
+                    self.loadCurrentRequest()
                 }
             }
-            self.loadCurrentRequest()
         })
+        self.requestReference.child("current").removeObserver(withHandle: self.iWentHandler!)
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         
-        requestReference.observe(.childAdded, with: { (snapshot) in
+            
+        self.cancelHandler = requestReference.child("current").observe(.childAdded, with: { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
                 
                 if request["sender"] as? String == self.userID! &&
-                    request["receiver"] as? String == self.receiver! {
+                    request["receiver"] as? String == self.receiver {
                     
-                    self.requestReference.child(snapshot.key).updateChildValues(["status": "cancelled", "load": "history"])
-                    
+                    self.moveToHistory(snapshot.key, status: "cancelled")
+                    self.loadCurrentRequest()
                 }
             }
-            self.loadCurrentRequest()
         })
+        self.requestReference.child("current").removeObserver(withHandle: self.cancelHandler!)
+    }
+    
+    func moveToHistory(_ key: String?, status: String) {
+        
+        self.requestReference.child("history").child(self.userID!)
+            .childByAutoId().updateChildValues(["sender": self.userID!,
+                                                "receiver": self.receiver!,
+                                                "status": status,
+                                                "timestamp": NSDate().timeIntervalSince1970])
+        
+        self.requestReference.child("current")
+            .child(key!).removeValue()
     }
     
     func loadCurrentRequest() {
         
-        requestReference.observe(.childAdded, with: { (snapshot) in
+        self.showEmptyPage()
+        
+        requestReference.child("current").observe(.childAdded, with: { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
                 
-                self.status = request["status"] as? String
-                self.receiver = request["receiver"] as? String
-                
-                if request["sender"] as? String == self.userID! && request["load"] as? String != "history" {
+                if request["sender"] as? String == self.userID! {
+                    
+                    self.receiver = request["receiver"] as? String
+                    self.status = request["status"] as? String
                     
                     switch self.status! {
                     case "accepted":
@@ -100,6 +120,7 @@ class MyRequestViewController: UIViewController {
                         self.hidePendingRelatedStuff()
                         
                         self.getAddressInfo()
+                        
                     case "denied":
                         
                         self.acceptedOrDenied.text = "Denied"
@@ -109,22 +130,24 @@ class MyRequestViewController: UIViewController {
                         
                         self.extraStatusInfo.text =
                         "Your request was denied by the owner.\n Please, try another toilet!"
+                        
                     case "pending":
                         
                         self.getToiletInfo()
-                        self.showPendingPage()
+                        
                     default:
                         
                         self.showEmptyPage()
-                        self.extraStatusInfo.text = "There is no request to show!"
                     }
                 }
             }
         })
+        self.loadingImage.isHidden = true
     }
     
     func getAddressInfo() {
-    self.userInfoReference.child(self.receiver!).child("toiletAddressInfo").observe(.value) { (snapshot) in
+        self.userInfoReference.child(self.receiver!)
+            .child("toiletAddressInfo").observe(.value) { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
                 
                 let streetAddress = request["streetAddress"] as! String
@@ -132,7 +155,7 @@ class MyRequestViewController: UIViewController {
                 let stateOrProvince = request["provinceOrState"] as! String
                 let country = request["country"] as! String
                 
-                self.message = "Your request has been accepted, and you can \'utilize the facilities\' on the following address: \n \n \(streetAddress) \n \(city) \n \(stateOrProvince) \n \(country)"
+                self.message = "Your request has been accepted, and you can \'utilize the facilities\' on the following address: \n \n\(streetAddress) \n \(city) \n \(stateOrProvince) \n \(country)"
             }
         self.extraStatusInfo.text = self.message
         }
@@ -142,36 +165,42 @@ class MyRequestViewController: UIViewController {
         
         self.acceptedOrDenied.isHidden = false
         self.extraStatusInfo.isHidden = false
+        self.cancelButton.isHidden = false
         
         self.profilePicture.isHidden = true
         self.toiletName.isHidden = true
         self.toiletDescription.isHidden = true
-        self.loadingImage.isHidden = true
         self.pendingLabel.isHidden = true
+        
     }
     
     func showEmptyPage() {
         
         self.extraStatusInfo.isHidden = false
+        self.extraStatusInfo.text = "There are no requests to show!"
         
         self.profilePicture.isHidden = true
         self.toiletName.isHidden = true
         self.toiletDescription.isHidden = true
         self.loadingImage.isHidden = true
         self.pendingLabel.isHidden = true
+        self.iWentButton.isHidden = true
         self.cancelButton.isHidden = true
         self.acceptedOrDenied.isHidden = true
     }
     
     func showPendingPage() {
         
-        self.acceptedOrDenied.isHidden = true
-        self.extraStatusInfo.isHidden = true
-        
+        self.loadingImage.isHidden = false
         self.profilePicture.isHidden = false
         self.toiletName.isHidden = false
         self.toiletDescription.isHidden = false
         self.pendingLabel.isHidden = false
+        self.cancelButton.isHidden = false
+        
+        self.acceptedOrDenied.isHidden = true
+        self.extraStatusInfo.isHidden = true
+        
     }
     
     func getToiletInfo() {
@@ -183,26 +212,30 @@ class MyRequestViewController: UIViewController {
                 self.toiletDescription.text = request["toiletDescription"] as? String
                 
                 self.getImage()
+                self.showPendingPage()
             }
         })
     }
     
     func getImage() {
         
+        if receiver == nil {
+            return
+        }
         userInfoReference.child(receiver!).child("profilePicture")
             .observeSingleEvent(of: .value) { (snapshot) in
                 
-                let imageURL = snapshot.value as? String ?? ""
-                let storageRef = self.storage.reference(forURL: imageURL)
-                
-                storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        self.profilePicture.image = UIImage(data: data!)
-                        self.loadingImage.isHidden = true
-                    }
+            let imageURL = snapshot.value as! String
+            let storageRef = self.storage.reference(forURL: imageURL)
+            
+            storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    self.profilePicture.image = UIImage(data: data!)
+                    self.loadingImage.isHidden = true
                 }
+            }
         }
     }
 

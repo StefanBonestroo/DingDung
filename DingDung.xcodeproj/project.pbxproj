@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A16A9FC2020B69A00B02786 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16A9FB2020B69A00B02786 /* RequestedTableViewController.swift */; };
+		0A16AA022020C30500B02786 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16AA012020C30500B02786 /* Request.swift */; };
+		0A16AA042020C77200B02786 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16AA032020C77200B02786 /* RequestTableViewCell.swift */; };
 		0A34060B2018DC92008212B6 /* ToiletDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34060A2018DC92008212B6 /* ToiletDetailsViewController.swift */; };
 		0A34060D201A06E3008212B6 /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34060C201A06E3008212B6 /* userInfo.swift */; };
 		0A34060F201A372F008212B6 /* MyRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A34060E201A372F008212B6 /* MyRequestViewController.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		00F10A990C43DEFB99A17174 /* Pods_DingDung.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DingDung.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EBC0DCCACF30D132E4D764 /* Pods-DingDung.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DingDung.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DingDung/Pods-DingDung.debug.xcconfig"; sourceTree = "<group>"; };
+		0A16A9FB2020B69A00B02786 /* RequestedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedTableViewController.swift; sourceTree = "<group>"; };
+		0A16AA012020C30500B02786 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		0A16AA032020C77200B02786 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		0A34060A2018DC92008212B6 /* ToiletDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletDetailsViewController.swift; sourceTree = "<group>"; };
 		0A34060C201A06E3008212B6 /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		0A34060E201A372F008212B6 /* MyRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 				0AA2FA9C200F755500F84DC8 /* Toilet.swift */,
 				0AA2FA8920077E8300F84DC8 /* mapStyle.swift */,
 				0A34060C201A06E3008212B6 /* userInfo.swift */,
+				0A16AA012020C30500B02786 /* Request.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 		0AA2FA8B20078B7400F84DC8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A16AA032020C77200B02786 /* RequestTableViewCell.swift */,
 				0AA2FA94200CE98C00F84DC8 /* LogInViewController.swift */,
 				0AA2FA8C20078BB600F84DC8 /* SignUpViewController.swift */,
 				0AA2FA8E200798B900F84DC8 /* CreateProfileViewController.swift */,
@@ -116,6 +124,7 @@
 				0A34060A2018DC92008212B6 /* ToiletDetailsViewController.swift */,
 				0AA2FA96200CF33200F84DC8 /* UserProfileViewController.swift */,
 				0A34060E201A372F008212B6 /* MyRequestViewController.swift */,
+				0A16A9FB2020B69A00B02786 /* RequestedTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -262,14 +271,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A34060D201A06E3008212B6 /* userInfo.swift in Sources */,
+				0A16A9FC2020B69A00B02786 /* RequestedTableViewController.swift in Sources */,
 				0AF5A6932004D68B0083449F /* ToiletMapViewController.swift in Sources */,
 				0AA2FA97200CF33200F84DC8 /* UserProfileViewController.swift in Sources */,
 				0A9FCD212003932800C39922 /* AppDelegate.swift in Sources */,
 				0AA2FA8D20078BB600F84DC8 /* SignUpViewController.swift in Sources */,
+				0A16AA022020C30500B02786 /* Request.swift in Sources */,
 				0AA2FA9D200F755500F84DC8 /* Toilet.swift in Sources */,
 				0A34060F201A372F008212B6 /* MyRequestViewController.swift in Sources */,
 				0AA2FA95200CE98C00F84DC8 /* LogInViewController.swift in Sources */,
 				0AA2FA8F200798B900F84DC8 /* CreateProfileViewController.swift in Sources */,
+				0A16AA042020C77200B02786 /* RequestTableViewCell.swift in Sources */,
 				0AA2FA8A20077E8300F84DC8 /* mapStyle.swift in Sources */,
 				0A34060B2018DC92008212B6 /* ToiletDetailsViewController.swift in Sources */,
 				0AA2FA932007D7AE00F84DC8 /* CameraViewController.swift in Sources */,

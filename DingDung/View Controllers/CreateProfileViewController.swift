@@ -23,27 +23,31 @@ class CreateProfileViewController: UIViewController {
     
     // Initiates the camera
     // (Source: https://www.ioscreator.com/tutorials/take-photo-tutorial-ios8-swift)
-    @IBAction func takePicture(_ sender: UIButton) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if usernameTextField.text == "" ||
-            toiletnameTextField.text! == "" ||
-            toiletDescriptionTextField.text! == "" {
+        if segue.identifier == "toCamera" {
             
-            createProfileAlert(message: "A field was left empty.")
-            
-        } else if (usernameTextField.text!.count < 5 && usernameTextField.text!.count > 21) ||
-                (toiletnameTextField.text!.count < 5 && toiletnameTextField.text!.count > 21) {
-            
-            createProfileAlert(message: "Username and Toilet Name should be between 6 and 20 characters long")
-            
-        } else if toiletDescriptionTextField.text!.count < 19 &&
-                toiletDescriptionTextField.text!.count > 201 {
-            
-            createProfileAlert(message: "Your Toilet Description should be between 20 and 200 characters long")
-            
-        } else {
-            storeData()
-            performSegue(withIdentifier: "toCamera", sender: nil)
+            if usernameTextField.text == "" ||
+                toiletnameTextField.text! == "" ||
+                    toiletDescriptionTextField.text! == "" {
+                
+                createProfileAlert(message: "A field was left empty.")
+                
+            } else if (usernameTextField.text!.count < 5 &&
+                        usernameTextField.text!.count > 21) ||
+                        (toiletnameTextField.text!.count < 5 &&
+                            toiletnameTextField.text!.count > 21) {
+                
+                createProfileAlert(message: "Username and Toilet Name should be between 6 and 20 characters long")
+                
+            } else if toiletDescriptionTextField.text!.count < 19 &&
+                        toiletDescriptionTextField.text!.count > 201 {
+                
+                createProfileAlert(message: "Your Toilet Description should be between 20 and 200 characters long")
+                
+            } else {
+                storeData()
+            }
         }
     }
     
@@ -54,6 +58,7 @@ class CreateProfileViewController: UIViewController {
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         
+        alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
     }
     
@@ -64,6 +69,7 @@ class CreateProfileViewController: UIViewController {
     // If enter is pressed, close editing
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
+        
         if(text == "\n") {
             
             toiletDescriptionTextField.resignFirstResponder()

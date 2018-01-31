@@ -20,13 +20,11 @@ class SignUpViewController: UIViewController {
     
     @IBAction func createNewAccount(_ sender: UIButton) {
         
-        let lengthTotal = (emailTextField.text! + passwordTextField.text! + confirmationTextField.text!).count
-        
         if emailTextField.text == "" || passwordTextField.text == "" ||
             confirmationTextField.text == "" {
             signUpAlert(message: "A field was left empty.")
-        } else if  lengthTotal <= 24 && emailTextField.text!.count >= 20 {
-            signUpAlert(message: "Both usernames and password must be more than 8 characters long. Also, usernames can't be longer than 20 characters.")
+        } else if passwordTextField.text!.count < 6 {
+            signUpAlert(message: "Your password should be 6 characters or longer.")
         } else if passwordTextField.text != confirmationTextField.text {
             signUpAlert(message: "Passwords must match.")
         } else {

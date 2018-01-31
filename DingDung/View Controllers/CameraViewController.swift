@@ -17,18 +17,6 @@ import FirebaseStorage
 
 class CameraViewController: UIViewController {
     
-    // References to current user and database
-    let currentUser = Auth.auth().currentUser
-    let ref = Database.database().reference()
-    let userID = Auth.auth().currentUser!.uid
-    
-    var succesfulCoordinates = false
-    var imagePicker: UIImagePickerController!
-    var taken = false
-    
-    // Range 0 to 1
-    var imageQuality: CGFloat = 0.5
-    
     @IBOutlet weak var waiting: UIActivityIndicatorView!
     
     @IBOutlet weak var personalInformationTitle: UILabel!
@@ -44,26 +32,42 @@ class CameraViewController: UIViewController {
     
     @IBOutlet weak var letsGoButton: UIButton!
     
-    @IBAction func goButtonPressed(_ sender: UIButton) {
+    // References to current user and database
+    let currentUser = Auth.auth().currentUser
+    let ref = Database.database().reference()
+    let userID = Auth.auth().currentUser!.uid
+    
+    var succesfulCoordinates = false
+    var imagePicker: UIImagePickerController!
+    var taken = false
+    
+    // Range 0 to 1
+    var imageQuality: CGFloat = 0.5
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let userReference = self.ref.child("users").child(self.userID)
+        
+        userReference.child("toiletAddressInfo")
+            .updateChildValues(["streetAddress": streetAddressText.text!,
+                                "city": cityText.text!,
+                                "provinceOrState": provinceOrStateText.text!,
+                                "country": countryText.text!])
+    }
+
+    
+    override func shouldPerformSegue(withIdentifier identifier: String,
+                                     sender: Any?) -> Bool {
         
         let userReference = self.ref.child("users").child(self.userID)
         saveCoordinates(userReference)
         
-        if self.succesfulCoordinates {
-            userReference.child("toiletAddressInfo")
-                .updateChildValues(["streetAddress": streetAddressText.text!,
-                                    "city": cityText.text!,
-                                    "provinceOrState": provinceOrStateText.text!,
-                                    "country": countryText.text!], withCompletionBlock: {_,_ in
-                                        
-                                        // Address needs to be adjusted if coordinates can't be calculated
-                                        if self.succesfulCoordinates {
-                                            self.performSegue(withIdentifier: "toMap", sender: nil)
-                                        } else {
-                                            self.createAlert("Could not store this address, as it cannot be converted to coordinates")
-                                        }
-                })
+        if identifier == "toMap" {
+            if self.succesfulCoordinates {
+                return true
+            }
         }
+        return false
     }
     
     // Lets user take a photo and saves that to Firebase database
@@ -72,7 +76,9 @@ class CameraViewController: UIViewController {
         if !taken {
             
             setUpCamera()
-            imagePickerControllerDidCancel(imagePicker)
+            
+            self.imagePicker.view!.removeFromSuperview()
+            self.imagePicker.removeFromParentViewController()
         } else {
             showAddressScreen()
         }
@@ -118,8 +124,8 @@ class CameraViewController: UIViewController {
     // Removes the subview if cancel is pressed
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
-        imagePicker.view!.removeFromSuperview()
-        imagePicker.removeFromParentViewController()
+        self.dismiss(animated: true) {
+        }
     }
     
     // Changes the Camera view to a view where addresses are entered
@@ -193,15 +199,14 @@ class CameraViewController: UIViewController {
                 self.succesfulCoordinates = false
                 self.createAlert("This is not a valid address. Try adjusting it a bit.")
             } else {
-                
+            
                 let placemark = placemarks?.first
                 let lat = placemark?.location?.coordinate.latitude
                 let long = placemark?.location?.coordinate.longitude
-            
+                
+                self.succesfulCoordinates = true
                 // Saves those to database
-                userReference.updateChildValues(["latitude": lat!, "longitude": long!], withCompletionBlock: {_,_ in
-                    self.succesfulCoordinates = true
-                })
+                userReference.updateChildValues(["latitude": lat!, "longitude": long!])
             }
         }
     }

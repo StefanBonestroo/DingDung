@@ -29,15 +29,19 @@ class ToiletMapViewController: UIViewController {
     var availableToilets: [Toilet] = []
     var toiletClicked: Toilet = Toilet()
     var markerIcon = UIImage(named: "markericon.png")!.withRenderingMode(.alwaysTemplate)
+    var ownOpenIcon = UIImage(named: "markeropen.png")!.withRenderingMode(.alwaysTemplate)
+    var ownClosedIcon = UIImage(named: "markerclosed.png")!.withRenderingMode(.alwaysTemplate)
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
         self.locationManager.startUpdatingLocation()
         
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.delegate = self
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -60,7 +64,6 @@ class ToiletMapViewController: UIViewController {
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.setMinZoom(zoomLevel, maxZoom: zoomLevel)
 
-        
         do {
             // Styles the map
             mapView.mapStyle = try GMSMapStyle(jsonString: mapStyles.basicLayout)
@@ -84,10 +87,15 @@ class ToiletMapViewController: UIViewController {
             let marker = GMSMarker(position: toilet.location!)
             
             marker.map = mapView
-            marker.icon = self.markerIcon
             marker.title = "\(toilet.toiletName!)"
             marker.snippet = "\(toilet.username!)"
             marker.tracksInfoWindowChanges = true
+            
+            if toilet.owner == self.userID! {
+                marker.icon = self.ownOpenIcon
+            } else {
+                marker.icon = self.markerIcon
+            }
         }
     }
     

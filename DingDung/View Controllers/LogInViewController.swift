@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+
 class LogInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,13 +21,28 @@ class LogInViewController: UIViewController {
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         
         if emailTextField.text == "" || passwordTextField.text == "" {
-            signUpAlert(message: "A field was left empty.")
             
+            signUpAlert(message: "A field was left empty.")
         } else {
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+            Auth.auth().signIn(withEmail: emailTextField.text!,
+                               password: passwordTextField.text!) { (user, error) in
                 if error == nil {
-                    self.performSegue(withIdentifier: "succesfulLogIn", sender: nil)
+                    
+                    let userInfoReference = Database.database().reference().child("users")
+                    let userID = Auth.auth().currentUser?.uid
+                    
+                    userInfoReference.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if snapshot.hasChild("profilePicture") && snapshot.hasChild("toiletAddressInfo") {
+                            
+                            self.performSegue(withIdentifier: "succesfulLogIn", sender: nil)
+                        } else {
+                            
+                            self.performSegue(withIdentifier: "redoPicture", sender: nil)
+                        }
+                    })
                 } else {
+                    
                     let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -38,6 +54,7 @@ class LogInViewController: UIViewController {
     
     // Presents the user with a error message
     func signUpAlert (message: String) {
+        
         let alertController = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -51,6 +68,7 @@ class LogInViewController: UIViewController {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
@@ -58,6 +76,7 @@ class LogInViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         emailTextField.delegate = self
@@ -70,6 +89,7 @@ class LogInViewController: UIViewController {
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

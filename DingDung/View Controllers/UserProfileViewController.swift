@@ -38,11 +38,7 @@ class UserProfileViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func editPressed(_ sender: UIBarButtonItem) {
-        
-    }
-    
+
     @IBAction func toiletStatusChanged(_ sender: UISwitch) {
         
         if openSwitch.isOn {
@@ -81,7 +77,8 @@ class UserProfileViewController: UIViewController {
     
     func getImage() {
         
-        userInfoReference.child(userID!).child("profilePicture").observeSingleEvent(of: .value) { (snapshot) in
+        userInfoReference.child(userID!).child("profilePicture")
+            .observeSingleEvent(of: .value) { (snapshot) in
             
             let imageURL = snapshot.value as? String ?? ""
             let storageRef = self.storage.reference(forURL: imageURL)
