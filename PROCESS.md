@@ -18,6 +18,39 @@ De implementatie van de hele database/storage backend is nu compleet en klaar om
 
 Ik twijfel alleen nog over de camera viewcontroller, die nu een view deelt met het adres-invul schermpje (misschien moet ik die voor overzicht splitsen). Ik moet nog even uitvinden hoe ik die opgehaalde data tijdelijk in het geheugen van de telefoon kan houden, zodat deze niet bij elke segue opgehaald moet worden.
 
+## day 6
+Vandaag heb ik de mapView verder uitgebreid met een 'eigen locatie' marker op de map. Het ophalen van de toiletten heb ik een beginnetje mee gemaakt, morgen ga ik daar mee verder. 
+
+## day 7
+Deze dag heb ik gewerkt aan het plaatsen van markers op de map. Dit bleek nog een uitdaging, omdat ik nog moest leren werken met het MVC structuur concept. Ik wil namelijk wel dat extra info niet opgehaald hoeft te worden in het 'details' scherm. 
+
+Hiermee los ik ook het probleem op dat ik op dag 5 had, in het 'Toilet()' model worden nu alle toiletten op het scherm opgeslagen.
+
+## day 8
+Alle toiletten worden nu correct weergegeven op de map in een overzichtelijke view. Morgen ga ik werken aan het user profile, dit zodat de beschikbaarheid van een toilet snel geimplementeerd kan worden
+
+## day 9
+Het user profiel wordt nu op 1 van de tabs weergegeven met een 'availability schakelaar', zodat mensen ervoor kunnen kiezen hun toilet op onbeschikbaar te zetten. 
+
+Verder heb ik kleine detail pop-upjes aan de map toegevoegd, die openen als je op een toilet klikt. Hierop staat de naam van het toilet en username van de user. Ik heb een klein beginnetje gemaakt met het detail scherm, hier wil ik namelijk heen als ik op 1 zo'n infoWindow (pop-upje) druk.
+
+## day 10
+Het klikken op de pop-upjes blijkt een lastige taak. Er is weinig documentatie beschikbaar wat betreft de uitleg en hoe/wanneer de delegate van de mapView gerund wordt. Er is een didTapInfoWindow of functie waar ik de segue naar het detail scherm in zet, maar deze voert niet uit.
+
+## day 11
+Vandaag kwam ik er achter dat het initializen met 'mapView.delegate = self' niet in de viewDidLoad() moest gebeuren, maar in de viewWillAppear(). Volgensmij is het namelijk zo dat de delegate + code eerder vastgelegd wordt dan viewDidLoad(), aldus viewWillAppear() (welk eerder uitvoerd).
+
+Verder heb ik het detailscherm + segues geimplementeerd. Dit scherm geeft nu de details van het betreffende toilet weer, en de data van dit toilet wordt met de segue meegegeven.
+
+## day 12
+Het indienen van een request in het details scherm creeërt een nieuwe request in de database. Dit heb ik in een transactieachtige structuur gezet, in een andere tabel als de users.
+
+Het ophalen van de statussen van de requests en de verwerking daarvan (hoe negeer je verlopen transacties zonder veel tijd te verliezen etc.) wordt nog lastig te implementeren
+
+## day 13
+Het ophalen van een request die de user heeft ingediend in de MyRequestViewController() verloopt ok, maar ik heb mijn twijfels bij de scalability van de huidige implementatie. Een search naar de huidige transactie zou onderaan moeten beginnen, aangezien de requests op chronologische volgorde in de database staan (childByAutoId() door Firebase), maar dit blijkt niet te kunnen met Firebase. 
+
+Ik moet de hele lijst ophalen en die vervolgens sorteren (wat tot nu toe ook niet gaat, het sorten van een lijst van dicts lukt niet) of de lijst doorspitten en children die vallen onder 'history' negeren. 
 
 
 # Design ideetjes:
