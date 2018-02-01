@@ -12,7 +12,7 @@ DingDung is een app waar je je toilet op kunt zetten, zodat mensen met hoge nood
 
 #### LogInViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/LogInViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/LogInViewController.PNG)
 
 Dit is het eerste scherm dat je te zien krijgt bij het opstarten, hier loggen de users in.
 
@@ -98,11 +98,11 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 
 ### MyRequestViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/MyRequestViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/MyRequestViewController.PNG)
 
 ### RequestedViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/RequestedViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/RequestedViewController.PNG)
 
 #### RequestTableViewCell
 
@@ -115,7 +115,7 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 #### mapStyle
 
 ## Database tree
-
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/completTree.png)
 
 
 
