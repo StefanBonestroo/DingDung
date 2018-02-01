@@ -52,9 +52,24 @@ Het ophalen van een request die de user heeft ingediend in de MyRequestViewContr
 
 Ik moet de hele lijst ophalen en die vervolgens sorteren (wat tot nu toe ook niet gaat, het sorten van een lijst van dicts lukt niet) of de lijst doorspitten en children die vallen onder 'history' negeren. 
 
+## day 14 
+Ik heb besloten om inderdaad een aparte history aan te maken, dit is eigenlijk ook wel handig voor implementatie in de toekomst. De tableView is nu af en het senden van requests werkt op 1 dingetje na: Wanneer iemand in 1 sessie een request heeft gestuurd, heeft gecancelled, en vervolgens een andere request wil sturen, wordt deze nieuwe gelijk gecancelled. Ik weet nog niet precies waardoor dit komt.
 
-# Design ideetjes:
+## day 15
+Ik kwam er achter dat de cancel button actie werd geactiveerd omdat er nog een observer op stond: Bij het indienen van een nieuwe request merkt deze .observe(.childAdded...) dat er een kind bijgekomen is en cancelled deze gelijk. Ik heb eerst een hele tijd geprobeerd ipv .observe, .observeSingleEvent(of: .value...) te gebruiken, maar hier kon ik om een of andere manier niet door heen loopen... Verder kon ik ook geen .observeSingleEvent(of: .childAdded...) gebruiken, want deze pakt maar 1 enkel kind.
 
-* Openingstijden toilet
-* Users/Owners raten
-* Max requests instellen
+Uiteindelijk heb ik besloten wel .observe te gebruiken in combinatie met .childAdded, alleen heb zet ik de observers gelijk stop na het uitvoeren van de database request (netjes is het niet, maar het werkt goed):
+
+[]()
+
+## day 16
+De laatste kleine bugs en lay-out dingetjes heb ik verholpen. Ook heb ik wat kleine toevoegingen gemaakt zoals:
+* Een mogelijkheid om het aanmaken van je account te hervatten, mocht deze vroegtijdig zijn afgebroken. Een simpele database check na het inloggen kijkt of de benodigde children (.hasChild) aanwezig zijn, en segued naar daar waar info ontbreekt.
+* Een mogelijkheid om plaatjes aan te klikken en ze hiermee te vergrootten (meer een lay-out dingetje)
+
+## day 17 
+Ik ben er van overtuigd dat mijn app nu af is. Er zijn nog heel wat leuke dingen die ik extra had kunnen implementeren, had ik meer tijd gehad (en wellicht ook genomen) zoals bijv.:
+* De mogelijkheid voor users om openingstijden voor hun toilet in te stellen, en hiermee de beschikbaarheid te automatiseren
+* De mogelijkheid om andere users te raten voor het gebruik van jouw toilet (en hun gezelligheid), en de mogelijkheid om gerate te worden voor de kwaliteit van jouw toilet
+* Een 'History' scherm in de ontvangen requests lijst <- De back-end hiervan heb ik al bijna afgeschreven.
+* De mogelijkheid om een user een 'max requests per day' te laten instellen, zodat die niet overspoelt wordt door aanvragen.
