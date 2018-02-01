@@ -58,6 +58,7 @@ Ik moet de hele lijst ophalen en die vervolgens sorteren (wat tot nu toe ook nie
 
 ## day 14 
 Ik heb besloten om inderdaad een aparte history aan te maken, dit is eigenlijk ook wel handig voor implementatie in de toekomst.
+
 ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/database.png)
 
 De tableView is nu af en het senden van requests werkt op 1 dingetje na: Wanneer iemand in 1 sessie een request heeft gestuurd, heeft gecancelled, en vervolgens een andere request wil sturen, wordt deze nieuwe gelijk gecancelled. Ik weet nog niet precies waardoor dit komt.
