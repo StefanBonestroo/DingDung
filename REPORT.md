@@ -115,7 +115,11 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 #### mapStyle
 
 ## Database tree
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/completTree.PNG)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/completeTree.png)
+
+## Motivatie
+
+Een app maken kost meer moeite dan ik van te voren voor ogen had. Mijn 'ik-duik-er-wel-even-in' mentaliteit, goed te zien in mijn DESIGN.md, is soms een obstakel voor mij geweest. Verschillende ideeën die ik had, zoals het implementeren van een user-rating systeem, ben ik uiteindelijk niet aan toegekomen. Ook structuren waarvan ik dacht dat ze zouden werken moesten anders aangepakt worden (de database requests bijv.). Desalniettemin, heb ik in de afgelopen weken meer geleerd dan wanneer dan ook. Zelf nu kijk ik met enige walging naar de code die ik 3 weken geleden geschreven heb, dat is een goed teken toch?
 
 
 
