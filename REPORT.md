@@ -32,7 +32,7 @@ Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### SignUpViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/SignUpViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/SignUpViewController.PNG)
 
 Hier kunnen users een account aanmaken. 
 
@@ -50,7 +50,7 @@ Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### CreateProfileViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CreateProfileViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CreateProfileViewController.PNG)
 
 Een user zal in 3 verschillende text velden zijn/haar ‘Username’, ‘Toilet Name’, en ‘Toilet Description’ moeten invoeren.
 
@@ -66,7 +66,7 @@ De ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### CameraViewController (ook een CreateAddressViewController)
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CameraViewController.png) ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CameraPicker.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CameraViewController.PNG) ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/CameraPicker.PNG)
 
 Hier kan de user zowel een profielfoto nemen, als zijn/haar adres informatie invoeren. Deze adres informatie wordt bij een geaccepteerde request verstrekt aan de zender.
 
@@ -90,11 +90,11 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 
 ### ToiletMapViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/ToiletMapViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/ToiletMapViewController.PNG)
 
 ### ToiletDetailsViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/ToiletDetailsViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/ToiletDetailsViewController.PNG)
 
 ### MyRequestViewController
 
@@ -113,6 +113,8 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 #### Request
 
 #### mapStyle
+
+## Database tree
 
 
 
