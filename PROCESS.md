@@ -13,7 +13,7 @@ Ik heb besloten van het 'uitleg-tussenschermpje' een scherm te maken waar de use
 
 Morgen ben ik van plan het laatste deel hiervan te doen, dat is het storen van de genomen toilet foto aka profielfoto. Hier moet ik de Firebase Storage gebruiken en het linkje naar de profielfoto in de database opslaan. Verder moet ik ook even beslissen in welke taal ik mijn repo wil presenteren, dit is nu een beetje inconsequent.
 
-[](https://github.com/StefanBonestroo/DingDung/blob/master/doc/cameraViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/cameraViewController.png)
 
 ## day 5
 De implementatie van de hele database/storage backend is nu compleet en klaar om opgehaald te worden in andere views. Een referentie naar storage locatie van de profielfoto wordt ook opgeslagen in de database. Verder heb ik gebruik gemaakt van de CLGeocoder( ) om het ingevulde adres om te zetten in coordinaten, zodat het adres zelf enkel bij een geaccepteerde request opgehaald hoeft te worden (coordinaten zijn hier voor het weergeven op de map).
@@ -47,7 +47,7 @@ Verder heb ik het detailscherm + segues geimplementeerd. Dit scherm geeft nu de 
 ## day 12
 Het indienen van een request in het details scherm creeërt een nieuwe request in de database. Dit heb ik in een transactieachtige structuur gezet, in een andere tabel als de users.
 
-[](https://github.com/StefanBonestroo/DingDung/blob/master/doc/transactions.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/transactions.png)
 
 Het ophalen van de statussen van de requests en de verwerking daarvan (hoe negeer je verlopen transacties zonder veel tijd te verliezen etc.) wordt nog lastig te implementeren
 
@@ -58,7 +58,8 @@ Ik moet de hele lijst ophalen en die vervolgens sorteren (wat tot nu toe ook nie
 
 ## day 14 
 Ik heb besloten om inderdaad een aparte history aan te maken, dit is eigenlijk ook wel handig voor implementatie in de toekomst.
-[](https://github.com/StefanBonestroo/DingDung/blob/master/doc/database.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/database.png)
+
 De tableView is nu af en het senden van requests werkt op 1 dingetje na: Wanneer iemand in 1 sessie een request heeft gestuurd, heeft gecancelled, en vervolgens een andere request wil sturen, wordt deze nieuwe gelijk gecancelled. Ik weet nog niet precies waardoor dit komt.
 
 ## day 15
@@ -66,7 +67,7 @@ Ik kwam er achter dat de cancel button actie werd geactiveerd omdat er nog een o
 
 Uiteindelijk heb ik besloten wel .observe te gebruiken in combinatie met .childAdded, alleen heb zet ik de observers gelijk stop na het uitvoeren van de database request (netjes is het niet, maar het werkt goed):
 
-[](https://github.com/StefanBonestroo/DingDung/blob/master/doc/exitObserver.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/exitObserver.png)
 
 ## day 16
 De laatste kleine bugs en lay-out dingetjes heb ik verholpen. Ook heb ik wat kleine toevoegingen gemaakt zoals:
