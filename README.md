@@ -10,9 +10,6 @@ Datum: 08-01-2018
 * Mensen de mogelijkheid geven een toilet profiel te maken, en hun toilet beschikbaar te stellen voor gasten.
 * Mensen connecten en een community bouwen
 
-
-## Project Proposal
-
 ### Het Probleem
 *“Geerte Piening (23) kreeg de boete tijdens een stapavond in 2015. Nadat ze de kroeg had verlaten, moest ze op straat plotseling nodig plassen. Ze mocht het café niet meer in. Er waren in de omgeving nergens openbare toiletten voor vrouwen te vinden. Daarom besloot ze haar behoefte te doen achter een betonblok. Drie politieagenten zagen het en slingerden Piening op de bon.”* - [Source - NRC Handelsblad](https://www.nrc.nl/nieuws/2017/09/18/rechter-handhaaft-boete-voor-wildplassen-a1573866)
 
@@ -23,9 +20,6 @@ Met DingDung kunnen in hun omgeving zoeken naar beschikbare toiletten. Op een ka
 
 ### Het Motto
 DingDung hoopt uitkomst te bieden op de vervelende momenten, en het ‘dagje uit’ zorgeloos te laten verlopen. Daar bovenop wil DingDung een community van toilet-gebruikers creëren en verbinden, en het poep-en-pies-taboe te doorbreken.
-
-### Hoe Het Er Uit Gaat Zien
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/Concept%20Visualization.png)
 
 ### Technische Verduidelijking
 
@@ -38,7 +32,3 @@ DingDung hoopt uitkomst te bieden op de vervelende momenten, en het ‘dagje uit
 * [Couchsurfing](https://www.couchsurfing.com/mobile-hangouts) - De request en rating componenten zijn vergelijkbaar met de componenten die in deze app te vinden zijn.
 
 * [Roamler](https://itunes.apple.com/nl/app/roamler/id440588804) - Hier kunnen requests gedaan worden, daarnaast krijg je op acceptatie van de request verder info. Op een (Google Maps?) kaartje wordt ook de nabijheid van een bepaalde plek weergegeven. Poeper zal een vergelijkbaar systeem gebruiken.
-  
-#### Mogelijke Struikelblokken
-Het is chaotisch (en misschien kost het teveel data) om alle plekken weer te geven, helemaal als je je in een drukke stad bevindt. Ik zal een manier moeten vinden om prioriteiten te gebruiken zodat alleen de relevante opties weergegeven worden.
-
