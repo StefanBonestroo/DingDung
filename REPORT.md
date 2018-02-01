@@ -6,13 +6,13 @@
 
 DingDung is een app waar je je toilet op kunt zetten, zodat mensen met hoge nood daar, mits het jou uitkomt, gebruik van kunnen maken. Ook wanneer jij zelf in nood bent kun je een toilet ‘request’ doen bij een toilet in de buurt, welk geaccepteerd of geweigerd kan worden door de eigenaar. 
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/App_demo.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/App%20demo.png)
 
 ### App Design
 
 #### LogInViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/LogInViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/LogInViewController.png)
 
 Dit is het eerste scherm dat je te zien krijgt bij het opstarten, hier loggen de users in.
 
@@ -28,7 +28,7 @@ Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### SignUpViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/SignUpViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/SignUpViewController.png)
 
 Hier kunnen users een account aanmaken. 
 
@@ -43,7 +43,7 @@ Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### CreateProfileViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/CreateProfileViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/CreateProfileViewController.png)
 
 Een user zal in 3 verschillende text velden zijn/haar ‘Username’, ‘Toilet Name’, en ‘Toilet Description’ moeten invoeren.
 
@@ -56,7 +56,7 @@ De ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 ### CameraViewController (ook een CreateAddressViewController)
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/CameraViewController.png) ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/CameraPicker.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/CameraViewController.png) ![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/CameraPicker.png)
 
 Hier kan de user zowel een profielfoto nemen, als zijn/haar adres informatie invoeren. Deze adres informatie wordt bij een geaccepteerde request verstrekt aan de zender.
 
@@ -73,19 +73,19 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 
 ### ToiletMapViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/ToiletMapViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/ToiletMapViewController.png)
 
 ### ToiletDetailsViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/ToiletDetailsViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/ToiletDetailsViewController.png)
 
 ### MyRequestViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/MyRequestViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/MyRequestViewController.png)
 
 ### RequestedViewController
 
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report_photos/RequestedViewController.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/report%20photos/RequestedViewController.png)
 
 #### RequestTableViewCell
 
