@@ -115,7 +115,7 @@ De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgen
 #### mapStyle
 
 ## Database tree
-![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/completTree.png)
+![](https://github.com/StefanBonestroo/DingDung/blob/master/doc/completTree.PNG)
 
 
 
