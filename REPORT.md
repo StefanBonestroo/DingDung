@@ -21,9 +21,13 @@ De authenticatie van een user gebeurt met behulp van Google’s [Firebase](https
 Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 * @IBAction - *submitButtonPressed*
+
 	Met het drukken op ‘submit’ wordt eerst gecheckt of er aan alle voorwaarden voldaan worden. Vervolgens wordt met deze informatie naar Firebase een request gestuurd, welk ons verteld of een user succesvol is ingelogd.
+	
 * func *signUpAlert*
+
 	Maakt het mogelijk om een pop-upje met error informatie weer te geven, ook Firebase error beschrijvingen (user bestaat niet etc.). Deze specifieke functie wordt in een paar andere viewControllers ook gebruikt.
+	
 * “Don’t have an account? SIGN UP”. Het klikken op SIGN UP triggert een segue naar de SignUpViewController.
 
 ### SignUpViewController
@@ -37,8 +41,11 @@ Op een gelijkmatige wijze wordt Firebase weer gerequest om een nieuwe user aan t
 Deze ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 * @IBAction - *createNewAccount*
+
 	Met het drukken op deze ‘submit’ worden er een aantal checks uitgevoerd en wordt de functie ‘makeNewUser()’ aangeroepen.
-* func *makeNewUser()
+	
+* func *makeNewUser()*
+
 	Instrueert Firebase een nieuwe user aan te maken, wanneer dit goed gaat wordt de segue naar de CreateProfileViewController getriggerd.
 
 ### CreateProfileViewController
@@ -50,8 +57,11 @@ Een user zal in 3 verschillende text velden zijn/haar ‘Username’, ‘Toilet 
 De ‘UIViewController’ class bevat de volgende belangrijke onderdelen:
 
 * een *prepare(for: segue)* met de identifier “toCamera”
+
 	Hier worden checks voor correcte data invoer gerund (min/max lengte Toilet Description etc.), en wanneer correct wordt ‘storeData()’ aangeroepen
+	
 * func *storeData*
+
 	Dit is het eerste moment dat er gebruik gemaakt wordt van de ‘Firebase database’, in een grote ‘users’ tree wordt de tak met het unieke ‘userID’ van de huidig ingelogde geupdate met de ingevoerde waarden uit dit scherm.
 
 ### CameraViewController (ook een CreateAddressViewController)
@@ -63,12 +73,19 @@ Hier kan de user zowel een profielfoto nemen, als zijn/haar adres informatie inv
 De ‘UIViewController’ en ‘UIImagePickerController class bevatten de volgende belangrijke onderdelen:
 
 * func *setUpCamera* 
+
 	Deze functie maakt ‘UIImagePickerController()’ object welk modally over de ‘UIViewController’ wordt weergegeven.
-* func *imagePickerController( picker, didFinishPickingMediaWithInfo: …)
+	
+* func *imagePickerController( picker, didFinishPickingMediaWithInfo: …)*
+
 	Wanneer de ‘Use Photo’ knop wordt ingedrukt, heeft de user een photo gemaakt en gekozen. Vervolgens wordt ‘saveImage()’ aangeroepen.
+	
 * func *saveImage*
+
 	De genomen foto wordt gecomprimeerd en geupload naar de ‘Firebase storage’. De path naar deze foto in de storage wordt vervolgens opgeslagen in de database. Vervolgens wordt de ImagePicker gedismissed en wordt ‘viewWillAppear()’ aangeroepen. De foto is al genomen, dus wordt showAddressScreen aangeroepen
+	
 * func *showAddressScreen*
+
 	Alle benodigde onderdelen voor dit scherm worden ge un-hide en de user kan zijn/haar adres invoeren. De informatie wordt, voor dat het wordt verstuurd, tot coordinaten omgezet om geldigheid te checken, en om deze op te slaan in de database. Ook het adres wordt opgeslagen in de database
 
 ### ToiletMapViewController
