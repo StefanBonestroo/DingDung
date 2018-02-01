@@ -2,6 +2,10 @@
 //  ToiletMapViewController.swift
 //  DingDung
 //
+//  Handles the presentation of a Google Maps mapView containing the markers of
+//  every toilet whose users have made it available for use. The infoWindows of
+//  these marker are clickable and will lead to a more detailed view of the toilet
+//
 //  Created by Stefan Bonestroo on 09-01-18.
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
@@ -16,6 +20,10 @@ import GooglePlaces
 class ToiletMapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    
+    // It is made impossible to zoom out so that users
+    // will not be requesting the use of a toilet on
+    // the other side of the world
     let zoomLevel: Float = 15.0
     var locked = true
     
@@ -28,6 +36,7 @@ class ToiletMapViewController: UIViewController {
     
     var availableToilets: [Toilet] = []
     var toiletClicked: Toilet = Toilet()
+    
     var markerIcon = UIImage(named: "markericon.png")!.withRenderingMode(.alwaysTemplate)
     var ownOpenIcon = UIImage(named: "markeropen.png")!.withRenderingMode(.alwaysTemplate)
     var ownClosedIcon = UIImage(named: "markerclosed.png")!.withRenderingMode(.alwaysTemplate)
@@ -35,9 +44,9 @@ class ToiletMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        
         self.locationManager.startUpdatingLocation()
         
+        // We will be able to see our own location on the map
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.delegate = self
@@ -61,6 +70,7 @@ class ToiletMapViewController: UIViewController {
                                               longitude: 4.95559573,
                                               zoom: zoomLevel)
         
+        // Creates a mapView
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.setMinZoom(zoomLevel, maxZoom: zoomLevel)
 
@@ -91,6 +101,7 @@ class ToiletMapViewController: UIViewController {
             marker.snippet = "\(toilet.username!)"
             marker.tracksInfoWindowChanges = true
             
+            // A users own toilet is green of color
             if toilet.owner == self.userID! {
                 marker.icon = self.ownOpenIcon
             } else {
@@ -109,7 +120,8 @@ class ToiletMapViewController: UIViewController {
 
                 // If a toilet is available, store some basic info for display on map
                 if request["toiletStatus"] as? String == "true" {
-
+                    
+                    // In the 'Toilet' model, the coordinates are saved as 'CLLocationCoordinate2D' types
                     var coordinates: CLLocationCoordinate2D {
                         return CLLocationCoordinate2D (latitude: request["latitude"]! as! Double,
                                                        longitude: request["longitude"] as! Double)
@@ -130,6 +142,7 @@ class ToiletMapViewController: UIViewController {
         })
     }
     
+    // Facilitates the unwinding from the ToiletDetailsViewController()
     @ IBAction func closeDetails(segue: UIStoryboardSegue) {
         
     }
@@ -159,20 +172,25 @@ extension ToiletMapViewController: CLLocationManagerDelegate {
     }
 }
 
+// Handles the view of the Google Maps map
 extension ToiletMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         
         for toilet in availableToilets {
+            
             if toilet.username == marker.snippet {
+                
                 self.toiletClicked = toilet
                 self.performSegue(withIdentifier: "toDetails", sender: nil)
             }
         }
     }
     
+    // 'toiletInfo' of the toilet that was tapped will be passed with the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ToiletDetailsViewController {
+            
             destination.toiletInfo = self.toiletClicked
         }
     }

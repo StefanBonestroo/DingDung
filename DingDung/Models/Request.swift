@@ -2,6 +2,9 @@
 //  Request.swift
 //  DingDung
 //
+//  This model can be used to create an object containing request info.
+//  To be used inside the RequestedTableViewController()
+//
 //  Created by Stefan Bonestroo on 30-01-18.
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
@@ -16,6 +19,7 @@ class Request: NSObject {
     var status: String?
     var sender: String?
     
+    // Calculates the amount of minutes passed since entry in the database
     func calculateMinutes(_ currentTimestamp: Double?) -> Int {
         
         let minutes = 60.0

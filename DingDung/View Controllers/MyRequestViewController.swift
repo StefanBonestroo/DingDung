@@ -2,6 +2,10 @@
 //  MyRequestViewController.swift
 //  DingDung
 //
+//  Handles the presentation of the current request: pending, accepted, or denied.
+//  Here, this request can be canceled and/or put in the the request history.
+//  An accepted request will be coupled with the presentation of the toilet's address
+//
 //  Created by Stefan Bonestroo on 25-01-18.
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
@@ -15,6 +19,11 @@ import FirebaseStorage
 class MyRequestViewController: UIViewController {
 
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var bigProfilePicture: UIImageView!
+    
+    @IBOutlet weak var littlePictureButton: UIButton!
+    @IBOutlet weak var bigPictureButton: UIButton!
+    
     @IBOutlet weak var toiletName: UILabel!
     @IBOutlet weak var toiletDescription: UILabel!
     @IBOutlet weak var loadingImage: UIActivityIndicatorView!
@@ -33,6 +42,7 @@ class MyRequestViewController: UIViewController {
     let userInfoReference = Database.database().reference().child("users")
     let userID = Auth.auth().currentUser?.uid
     
+    // Firebase's .observe method should be shut off at some point
     var cancelHandler: DatabaseHandle?
     var iWentHandler: DatabaseHandle?
     
@@ -44,7 +54,7 @@ class MyRequestViewController: UIViewController {
     var receiver: String?
     var message = ""
     
-    
+    // A request is updated everytime the view appears
     override func viewWillAppear(_ animated: Bool) {
         
         loadCurrentRequest()
@@ -53,6 +63,7 @@ class MyRequestViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // Triggers the completion of a request when it was accepted
     @IBAction func iWentButtonPressed(_ sender: UIButton) {
             
         self.iWentHandler = requestReference.child("current").observe(.childAdded, with: { (snapshot) in
@@ -66,12 +77,13 @@ class MyRequestViewController: UIViewController {
                 }
             }
         })
+        // A observer should be shut off
         self.requestReference.child("current").removeObserver(withHandle: self.iWentHandler!)
     }
     
+    // Triggers the cancellation of a request, no matter the status
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         
-            
         self.cancelHandler = requestReference.child("current").observe(.childAdded, with: { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
                 
@@ -83,9 +95,11 @@ class MyRequestViewController: UIViewController {
                 }
             }
         })
+        // Exit observer
         self.requestReference.child("current").removeObserver(withHandle: self.cancelHandler!)
     }
     
+    // Removes a request from the 'current' tree and moves it to the user's 'history'
     func moveToHistory(_ key: String?, status: String) {
         
         self.requestReference.child("history").child(self.userID!)
@@ -98,6 +112,7 @@ class MyRequestViewController: UIViewController {
             .child(key!).removeValue()
     }
     
+    // Retrieves request data and presents them according to their status
     func loadCurrentRequest() {
         
         self.showEmptyPage()
@@ -145,7 +160,9 @@ class MyRequestViewController: UIViewController {
         self.loadingImage.isHidden = true
     }
     
+    // If a request was accepted, the user is presented with the toilet address
     func getAddressInfo() {
+        
         self.userInfoReference.child(self.receiver!)
             .child("toiletAddressInfo").observe(.value) { (snapshot) in
             if let request = snapshot.value as? [String: AnyObject] {
@@ -157,10 +174,12 @@ class MyRequestViewController: UIViewController {
                 
                 self.message = "Your request has been accepted, and you can \'utilize the facilities\' on the following address: \n \n\(streetAddress) \n \(city) \n \(stateOrProvince) \n \(country)"
             }
+                
         self.extraStatusInfo.text = self.message
         }
     }
     
+    // Every page has its own componements to be shown
     func hidePendingRelatedStuff() {
         
         self.acceptedOrDenied.isHidden = false
@@ -203,6 +222,7 @@ class MyRequestViewController: UIViewController {
         
     }
     
+    // This loads the toilet information of a request
     func getToiletInfo() {
         
         self.userInfoReference.child(self.receiver!).observe(.value, with: { (snapshot) in
@@ -217,6 +237,7 @@ class MyRequestViewController: UIViewController {
         })
     }
     
+    // Retrieves the requested toilet's profile picture
     func getImage() {
         
         if receiver == nil {
@@ -230,14 +251,36 @@ class MyRequestViewController: UIViewController {
             
             storageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
                 if let error = error {
+                    
                     print(error)
                 } else {
+                    
+                    self.profilePicture.clipsToBounds = true
+                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.height / 4
                     self.profilePicture.image = UIImage(data: data!)
+                    self.bigProfilePicture.image = UIImage(data: data!)
                     self.loadingImage.isHidden = true
                 }
             }
         }
     }
+    
+    // Enlarges the image view to fullscreen
+    @IBAction func littlePicturePressed(_ sender: UIButton) {
+        
+        bigPictureButton.isHidden = false
+        bigProfilePicture.isHidden = false
+    }
+    
+    // This hides that again
+    @IBAction func bigPicturePressed(_ sender: UIButton) {
+        
+        bigPictureButton.isHidden = true
+        bigProfilePicture.isHidden = true
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         

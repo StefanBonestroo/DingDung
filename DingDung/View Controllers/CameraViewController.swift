@@ -1,6 +1,9 @@
 //
-//  CameraViewController.swift
+//  CameraViewController.swift (+ SubmitAddressViewController)
 //  DingDung
+//
+//  CameraViewController() lets the user photograph his/her toilet, as well as
+//  input his/her address in 4 textfields.
 //
 //  Created by Stefan Bonestroo on 11-01-18.
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
@@ -37,13 +40,18 @@ class CameraViewController: UIViewController {
     let ref = Database.database().reference()
     let userID = Auth.auth().currentUser!.uid
     
+    // By default, coordinates are not saved/stored
+    // Coordinates need to be obtained by geocoding the address
     var succesfulCoordinates = false
+    
+    // Initiates the camera screen & defaults to a picture 'not being taken'
     var imagePicker: UIImagePickerController!
     var taken = false
     
-    // Range 0 to 1
+    // Compression of the image - Range: 0 to 1
     var imageQuality: CGFloat = 0.5
     
+    // Makes sure the address info is saved before going to the main application
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let userReference = self.ref.child("users").child(self.userID)
@@ -55,7 +63,7 @@ class CameraViewController: UIViewController {
                                 "country": countryText.text!])
     }
 
-    
+    // Only when the address is succelfully geocoded into coordinates, proceed
     override func shouldPerformSegue(withIdentifier identifier: String,
                                      sender: Any?) -> Bool {
         
@@ -73,6 +81,7 @@ class CameraViewController: UIViewController {
     // Lets user take a photo and saves that to Firebase database
     // (Source: https://www.ioscreator.com/tutorials/take-photo-tutorial-ios8-swift)
     override func viewWillAppear(_ animated: Bool) {
+        
         if !taken {
             
             setUpCamera()
@@ -80,6 +89,7 @@ class CameraViewController: UIViewController {
             self.imagePicker.view!.removeFromSuperview()
             self.imagePicker.removeFromParentViewController()
         } else {
+            
             showAddressScreen()
         }
     }
@@ -87,6 +97,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Delegates for keyboard dismissal
         streetAddressText.delegate = self
         cityText.delegate = self
         provinceOrStateText.delegate = self
@@ -94,6 +105,7 @@ class CameraViewController: UIViewController {
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
     }
     
@@ -121,11 +133,11 @@ class CameraViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // Removes the subview if cancel is pressed
+    // Removes the subview if cancel is pressed, however will be presented again.
+    // It is not possible to cancel the 'taking of a profile picture'
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
-        self.dismiss(animated: true) {
-        }
+        self.dismiss(animated: true)
     }
     
     // Changes the Camera view to a view where addresses are entered
@@ -148,6 +160,7 @@ class CameraViewController: UIViewController {
         letsGoButton.isHidden = false
     }
     
+    // If return is pressed, dismiss keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         streetAddressText.resignFirstResponder()
@@ -162,6 +175,7 @@ class CameraViewController: UIViewController {
         
         let profileRef = Storage.storage().reference().child("profilePictures")
         
+        // JPEG, because it takes forever to load a png
         if let uploadData = UIImageJPEGRepresentation(image, imageQuality) {
             
             profileRef.child("\(userID).jpg").putData(uploadData, metadata: nil) { (metadata, error) in
@@ -173,7 +187,7 @@ class CameraViewController: UIViewController {
                     self.createAlert("Something went wrong uploading your picture. Try retaking it some other time.")
                     return
                 }
-                
+                // 'downloadURL' is what is being saved to the userInfo in the Firebase database
                 let downloadURL = String(describing: metadata!.downloadURL()!)
                 let userReference = self.ref.child("users").child(self.userID)
                 
@@ -205,12 +219,14 @@ class CameraViewController: UIViewController {
                 let long = placemark?.location?.coordinate.longitude
                 
                 self.succesfulCoordinates = true
+                
                 // Saves those to database
                 userReference.updateChildValues(["latitude": lat!, "longitude": long!])
             }
         }
     }
     
+    // Presents to the user a custom error message
     func createAlert(_ message: String) {
         
         let alert = UIAlertController(title: "Oops!",
@@ -223,7 +239,6 @@ class CameraViewController: UIViewController {
         
     }
 }
-
 
 // Makes dismissal of the keyboard/typer possible
 extension CameraViewController: UITextFieldDelegate {

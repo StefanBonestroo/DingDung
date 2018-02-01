@@ -2,6 +2,9 @@
 //  RequestTableViewCell.swift
 //  DingDung
 //
+//  This handles connections and communication of a single cell.
+//  Button presses are passed on through the delegate, to the tableView
+//
 //  Created by Stefan Bonestroo on 30-01-18.
 //  Copyright © 2018 Stefan Bonestroo. All rights reserved.
 //
@@ -11,8 +14,10 @@ import Foundation
 
 import Firebase
 
+// The protocol that the cell and tableView comply
 // Source: https://medium.com/@aapierce0/swift-using-protocols-to-add-custom-behavior-to-a-uitableviewcell-2c1f09610aa1
 protocol RequestTableViewDelegate {
+    
     func requestWasAccepted(_ sender: RequestTableViewCell)
     func requestWasDenied(_ sender: RequestTableViewCell)
 }
