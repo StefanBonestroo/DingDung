@@ -3,7 +3,7 @@
 
 Stefan Bonestroo - 10500790
 
-[![](https://img.youtube.com/vi/IP22FeanJfg/hqdefault.jpg)](https://www.youtube.com/watch?v=IP22FeanJfg)
+[![](http://www.yim778.com/data/out/192/1203988.png)](https://www.youtube.com/watch?v=IP22FeanJfg)
 
 ## App Goals
 * Mensen toiletten in de buurt laten vinden, openbaar of bij mensen thuis
